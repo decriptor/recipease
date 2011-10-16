@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1">
+        <link href="CSS/layout.css" rel="stylesheet" type="text/css" />
+        <link href="CSS/format.css" rel="stylesheet" type="text/css" />
+		<title>Recipease - Meal Planner</title>
+</head>
+
+<body>
+<div id="container" style="background-image: url('Images/recipease_bg.gif');">
+	<!-- HOMEPAGE LOGO LINK -->
+	<div id="homelink">
+		<a href="index.html"> </a>
+	</div>
+	<!-- MASTHEAD -->
+	<div id="masthead">
+		<div class="moveright">
+			<p>&nbsp;&nbsp;
+				<a id="HyperLink1" class="noUnderline" href="login.html">My Account</a><br />
+				<a id="HyperLink2" class="noUnderline" href="login.html">[ + ] Log Out</a>
+			</p>
+		</div>
+	</div>
+	<!-- MAIN CONTENT -->
+	<div id="maincontent">
+		<!-- NAV -->
+		<div id="navigation">
+			<div class="fixedScroll">
+			<div id="navigation">
+			<div class="fixedScroll">
+				<input class="navButton" id="Button1" onclick="location.href='recipe.html'" value="Recipes" type="submit" name="Button1"> <br /><br />
+				<input class="navButton" id="Button2" onclick="location.href='pantry.html'" value="Pantry" type="submit" name="Button2"> <br /><br />
+				<input class="navButton" id="Button3" onclick="location.href='meal.html'" value="Meals" type="submit" name="Button3"> <br /><br />
+				<input class="navButton" id="Button4" onclick="location.href='shopping.html'" value="Shopping" type="submit" name="Button4"> <br /><br />
+			</div>
+			</div>
+			</div>
+		</div>
+		<!-- MAIN CONTENT EDITABLE REGION GOES HERE -->
+		<div id="onecolumn">
+			<h1>My Meals</h1>
+			<span>Find by Category:&nbsp;</span> 
+			<!-- DROP DOWN LIST ITEMS -->
+			<select class="dropDownList" id="MainContent_DropDownList1" name="ctl00$MainContent$DropDownList1"> 
+				<option selected value="Main Dishes">Main Dishes</option> 
+				<option value="Appetizers">Appetizers</option> 
+				<option value="Italian">Italian</option> 
+				<option value="Vegetarian">Vegetarian</option> 
+				<option value="Beverages">Beverages</option> 
+				<option value="Side Dishes">Side Dishes</option> 
+				<option value="Mexican">Mexican</option> 
+				<option value="Chinese">Chinese</option>
+			</select><br><br>&nbsp;&nbsp;&nbsp;
+			<span>Subcategory(optional):&nbsp;</span> 
+			<select class="dropDownList" id="MainContent_DropDownList2" name="ctl00$MainContent$DropDownList2"> 
+				<option value="Main Dishes">Main Dishes</option> 
+				<option value="Appetizers">Appetizers</option> 
+				<option value="Italian">Italian</option> 
+				<option value="Vegetarian">Vegetarian</option> 
+				<option value="Beverages">Beverages</option> 
+				<option value="Side Dishes">Side Dishes</option> 
+				<option value="Mexican">Mexican</option> 
+				<option selected value="Chinese">Chinese</option>
+			</select><br><br>
+			<!-- SEARCH BUTTON -->
+			<input id="MainContent_Button1" class="buttonBlack" onclick="location.href='results.html'" value="Search" type="submit" name="ctl00$MainContent$Button1"> 
+			<br><br>
+			<HR>
+			<!-- SEARCH BY INGREDIENTS -->
+			<br><br>Search ingredients:<br><br>
+			<input class="textBoxMedium" style="width: 228px; height: 25px;" id="MainContent_TextBox1" value="Item" type="text" name="ctl00$MainContent$TextBox1">&nbsp;&nbsp;&nbsp;&nbsp; 
+			<input class="textBoxMedium" style="width: 228px; height: 25px;" id="MainContent_TextBox2" value="Item" type="text" name="ctl00$MainContent$TextBox2">&nbsp;<br>
+			<input class="textBoxMedium" style="width: 228px; height: 25px;" id="MainContent_TextBox3" value="Item" type="text" name="ctl00$MainContent$TextBox3">&nbsp;&nbsp;&nbsp;&nbsp; 
+			<input class="textBoxMedium" style="width: 228px; height: 25px;" id="MainContent_TextBox4" value="Item" type="text" name="ctl00$MainContent$TextBox4">&nbsp;<br>
+			<input class="textBoxMedium" style="width: 228px; height: 25px;" id="MainContent_TextBox5" value="Item" type="text" name="ctl00$MainContent$TextBox5">&nbsp;&nbsp;&nbsp;&nbsp; 
+			<input class="textBoxMedium" style="width: 228px; height: 25px;" id="MainContent_TextBox6" value="Item" type="text" name="ctl00$MainContent$TextBox6">&nbsp;<br>
+			<input class="textBoxMedium" style="width: 228px; height: 25px;" id="MainContent_TextBox7" value="Item" type="text" name="ctl00$MainContent$TextBox7">&nbsp;&nbsp;&nbsp;&nbsp; 
+			<input class="textBoxMedium" style="width: 228px; height: 25px;" id="MainContent_TextBox8" value="Item" type="text" name="ctl00$MainContent$TextBox8">&nbsp;<br><br>
+			<!-- SEARCH BUTTON -->
+			<input id="MainContent_Button2" class="buttonBlack" onclick="location.href='results.html'" value="Search" type="submit" name="ctl00$MainContent$Button2"> 
+		</div>
+		<!-- END MAIN CONTENT -->
+		<div class="clearfloat"></div>
+	</div> 
+	<!-- FOOTER -->
+	<div id="footer">
+		<p>
+		<span class="disclaimer">
+			This site is for educational purposes only.
+		</span>
+		</p>
+	</div> 
+</div>
+</body>
+</html>

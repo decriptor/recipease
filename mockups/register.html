@@ -1,0 +1,163 @@
+<!DOCTYPE html PUBLIC "-//W3C//Dtd XHTML 1.0 Transitional//EN" "http://www.w3.org/tr/xhtml1/Dtd/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1">
+        <link href="CSS/layout.css" rel="stylesheet" type="text/css" />
+        <link href="CSS/format.css" rel="stylesheet" type="text/css" />
+		<title>Recipease - Account Registration</title>
+</head>
+
+<body>
+<div id="container" style="background-image: url('Images/recipease_bg.gif');">
+	<!-- HOMEPAGE LOGO LINK -->
+	<div id="homelink">
+		<a href="index.html"> </a>
+	</div>
+	<!-- MASTHEAD -->
+	<div id="masthead">
+		<div class="moveright">
+			<p>&nbsp;&nbsp;
+				<a id="HyperLink1" class="noUnderline" href="login.html">log in</a> &nbsp;&nbsp; / &nbsp;&nbsp;
+				<a id="HyperLink2" class="noUnderline" href="register.html">register</a>&nbsp;&nbsp; 
+			</p>
+		</div>
+	</div>
+	<!-- MAIN CONTENT -->
+	<div id="maincontent">
+		<!-- NAV -->
+		<div id="navigation">
+			<div class="fixedScroll">
+			<div id="navigation">
+			<div class="fixedScroll">
+				<input class="navButton" id="Button1" onclick="location.href='recipe.html'" value="Recipes" type="submit" name="Button1"> <br /><br />
+				<input class="navButton" id="Button2" onclick="location.href='pantry.html'" value="Pantry" type="submit" name="Button2"> <br /><br />
+				<input class="navButton" id="Button3" onclick="location.href='meal.html'" value="Meals" type="submit" name="Button3"> <br /><br />
+				<input class="navButton" id="Button4" onclick="location.href='shopping.html'" value="Shopping" type="submit" name="Button4"> <br /><br />
+			</div>
+			</div>
+			</div>
+		</div>
+		<!-- MAIN CONTENT EDITABLE REGION GOES HERE -->
+		<div id="onecolumn">
+			<h1>Account Registration</h1>
+			<p>Page is under construction... </p>
+			<!-- REGIStrATION FORM -->
+			<!-- table 1 -->
+			<table class="registrationTable" id="MainContent_CreateUserWizard1"cellSpacing=5 cellPadding=5>
+			<tbody>
+				<tr class="fullHeight">
+				<td>
+				<!-- table 1.1 -->
+				<table class="registrationTable fullSize" cellSpacing=5 cellPadding=5>
+				<tbody>
+					<tr>
+					<td class="fullSize">
+					<!-- table 1.2 -->
+					<table class="fullSize">
+					<tbody>
+						<!-- <tr>
+							<td colSpan=2 align="middle">Sign Up for Your New Account
+							</td>
+						</tr> -->
+						<tr>
+							<td align="right">
+							<label for="MainContent_CreateUserWizard1_CreateUserStepContainer_UserName">User Name: </label>
+							</td>
+							<td>
+							<input id="MainContent_CreateUserWizard1_CreateUserStepContainer_UserName" type="text" "name=ctl00$MainContent$CreateUserWizard1$CreateUserStepContainer$UserName">
+							<span class="hidden" id="MainContent_CreateUserWizard1_CreateUserStepContainer_UserNameRequired" title="User Name is required.">*</span>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">
+							<label for="MainContent_CreateUserWizard1_CreateUserStepContainer_Password">Password:</label>
+							</td>
+							<td>
+							<input id="MainContent_CreateUserWizard1_CreateUserStepContainer_Password" type="password" name="ctl00$MainContent$CreateUserWizard1$CreateUserStepContainer$Password">
+							<span class="hidden" id="MainContent_CreateUserWizard1_CreateUserStepContainer_PasswordRequired" title="Password is required.">*</span>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">
+							<label for="MainContent_CreateUserWizard1_CreateUserStepContainer_ConfirmPassword">Confirm Password:</label>
+							</td>
+							<td>
+							<input id="MainContent_CreateUserWizard1_CreateUserStepContainer_ConfirmPassword" type="password" name="ctl00$MainContent$CreateUserWizard1$CreateUserStepContainer$ConfirmPassword">
+							<span class="hidden"id="MainContent_CreateUserWizard1_CreateUserStepContainer_ConfirmPasswordRequired" title="Confirm Password is required.">*</span>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">
+							<label for="MainContent_CreateUserWizard1_CreateUserStepContainer_Email">E-mail:</label>
+							</td>
+							<td>
+							<input id="MainContent_CreateUserWizard1_CreateUserStepContainer_Email" type="text" name="ctl00$MainContent$CreateUserWizard1$CreateUserStepContainer$Email">
+							<span class="hidden" id="MainContent_CreateUserWizard1_CreateUserStepContainer_EmailRequired" title="E-mail is required.">*</span>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">
+							<label for="MainContent_CreateUserWizard1_CreateUserStepContainer_Question">Security Question:</label>
+							</td>
+							<td>
+							<input id="MainContent_CreateUserWizard1_CreateUserStepContainer_Question" type="text" name="ctl00$MainContent$CreateUserWizard1$CreateUserStepContainer$Question">
+							<span class="hidden" id="MainContent_CreateUserWizard1_CreateUserStepContainer_QuestionRequired" title="Security question is required.">*</span>
+							</td>
+						</tr>
+						<tr>
+							<td align="right"><label for="MainContent_CreateUserWizard1_CreateUserStepContainer_Answer">Security Answer:</label>
+							</td>
+							<td>
+							<input id="MainContent_CreateUserWizard1_CreateUserStepContainer_Answer" type="text" name="ctl00$MainContent$CreateUserWizard1$CreateUserStepContainer$Answer">
+							<span class="hidden" id="MainContent_CreateUserWizard1_CreateUserStepContainer_AnswerRequired" title="Security answer is required.">*</span>
+							</td>
+						</tr>
+						<tr>
+							<td colSpan=2 align="middle">
+							<span class="noDisplay" id="MainContent_CreateUserWizard1_CreateUserStepContainer_PasswordCompare">The Password and Confirmation Password must match.</span>
+							</td>
+						</tr>
+					</tbody>
+					</table>
+					<!-- END table 1.2 -->
+					</td>
+					</tr>
+				</tbody>
+				</table>
+				<!-- END table 1.1 -->
+				</td>
+				</tr>
+				<tr>
+				<td align="right">
+				<!-- table 2 -->
+				<table class="fullSize" cellSpacing=5 cellPadding=5>
+				<tbody>
+					<tr align="right">
+					<td align="right">
+						<input id="MainContent_CreateUserWizard1___CustomNav0_StepNextButtonButton" onclick="location.href='recipe.html'" class="buttonBlack" 
+						style="width: 110px;" value="Create User" type="submit" name="ctl00$MainContent$CreateUserWizard1$__CustomNav0$StepNextButtonButton">
+					</td>
+					</tr>
+				</tbody>
+				</table>
+				<!-- END table 2 -->
+				</td>
+				</tr>
+			</tbody>
+			</table>
+			<!-- END table 1 -->
+			</div>
+			<!-- END MAIN CONTENT -->
+			<div class="clearfloat"></div>
+	</div> 
+	<!-- FOOTER -->
+	<div id="footer">
+		<p>
+		<span class="disclaimer">
+			This site is for educational purposes only.
+		</span>
+		</p>
+	</div> 
+</div>
+</body>
+</html>

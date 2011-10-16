@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//Dtd XHTML 1.0 Transitional//EN" "http://www.w3.org/tr/xhtml1/Dtd/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1">
+        <link href="CSS/layout.css" rel="stylesheet" type="text/css" />
+        <link href="CSS/format.css" rel="stylesheet" type="text/css" />
+		<title>Recipease - Account Login</title>
+</head>
+
+<body>
+<div id="container" style="background-image: url('Images/recipease_bg.gif');">
+	<!-- HOMEPAGE LOGO LINK -->
+	<div id="homelink">
+		<a href="index.html"> </a>
+	</div>
+	<!-- MASTHEAD -->
+	<div id="masthead">
+		<div class="moveright">
+			<p>&nbsp;&nbsp;
+				<a id="HyperLink1" class="noUnderline" href="login.html">log in</a> &nbsp;&nbsp; / &nbsp;&nbsp;
+				<a id="HyperLink2" class="noUnderline" href="register.html">register</a>&nbsp;&nbsp; 
+			</p>
+		</div>
+	</div>
+	<!-- MAIN CONTENT -->
+	<div id="maincontent">
+		<!-- NAV -->
+		<div id="navigation">
+			<div class="fixedScroll">
+			<div id="navigation">
+			<div class="fixedScroll">
+				<input class="navButton" id="Button1" onclick="location.href='recipe.html'" value="Recipes" type="submit" name="Button1"> <br /><br />
+				<input class="navButton" id="Button2" onclick="location.href='pantry.html'" value="Pantry" type="submit" name="Button2"> <br /><br />
+				<input class="navButton" id="Button3" onclick="location.href='meal.html'" value="Meals" type="submit" name="Button3"> <br /><br />
+				<input class="navButton" id="Button4" onclick="location.href='shopping.html'" value="Shopping" type="submit" name="Button4"> <br /><br />
+			</div>
+			</div>
+			</div>
+		</div>
+		<!-- MAIN CONTENT EDITABLE REGION GOES HERE -->
+		<div id="onecolumn">
+			<H1>Account Login</H1>
+			<P>Page is under construction... </P>
+			<!-- LOGIN FORM -->
+			<table class="loginTable" id="MainContent_Login1" cellSpacing=2 cellPadding=1>
+			<tbody>
+				<tr>
+				<td>
+				<table cellPadding=6>
+				<tbody>
+					<!-- <tr>
+						<td colSpan=2 align="middle">Log In</td></tr>
+					<tr> -->
+						<td align="right">
+							<label for="MainContent_Login1_UserName">User Name: </label>
+						</td>
+						<td>
+							<input id="MainContent_Login1_UserName" type="text" name="ctl00$MainContent$Login1$UserName">
+							<span class="hidden" id="MainContent_Login1_UserNameRequired" title="User Name is required.">*</span>
+						</td>
+					</tr>
+					<tr>
+						<td align="right">
+							<label for="MainContent_Login1_Password">Password: </label></td>
+						<td>
+							<input id="MainContent_Login1_Password" type="password" name="ctl00$MainContent$Login1$Password">
+							<span class="hidden" id="MainContent_Login1_PasswordRequired" title="Password is required.">*</span>
+						</td>
+					</tr>
+					<tr>
+						<td colSpan=2>
+							<input id="MainContent_Login1_RememberMe" type="checkbox" name="ctl00$MainContent$Login1$RememberMe">
+							<label for="MainContent_Login1_RememberMe">Remember me next time.</label>
+						</td>
+					</tr>
+					<tr>
+					<!-- LOGIN BUTTON -->
+					<td colSpan=2 align="right">
+						<input class="buttonBlack" id="MainContent_Login1_LoginButton" onclick="location.href='recipe.html'" 
+							value="Log In" type="submit" name="ctl00$MainContent$Login1$LoginButton">
+					</td>
+					</tr>
+				</tbody>
+				</table>
+				</td>
+				</tr>
+			</tbody>
+			</table>
+		</div>
+		<!-- END MAIN CONTENT -->
+		<div class="clearfloat"></div>
+	</div> 
+	<!-- FOOTER -->
+	<div id="footer">
+		<p>
+		<span class="disclaimer">
+			This site is for educational purposes only.
+		</span>
+		</p>
+	</div> 
+</div>
+</body>
+</html>

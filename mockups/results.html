@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//Dtd XHTML 1.0 Transitional//EN" "http://www.w3.org/tr/xhtml1/Dtd/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1">
+        <link href="CSS/layout.css" rel="stylesheet" type="text/css" />
+        <link href="CSS/format.css" rel="stylesheet" type="text/css" />
+		<title>Recipease - Meal Planner Results</title>
+</head>
+
+<body>
+<div id="container" style="background-image: url('Images/recipease_bg.gif');">
+	<!-- HOMEPAGE LOGO LINK -->
+	<div id="homelink">
+		<a href="index.html"> </a>
+	</div>
+	<!-- MASTHEAD -->
+	<div id="masthead">
+		<div class="moveright">
+			<p>&nbsp;&nbsp;
+				<a id="HyperLink1" class="noUnderline" href="login.html">My Account</a><br />
+				<a id="HyperLink2" class="noUnderline" href="login.html">[ + ] Log Out</a>
+			</p>
+		</div>
+	</div>
+	<!-- MAIN CONTENT -->
+	<div id="maincontent">
+		<!-- NAV -->
+		<div id="navigation">
+			<div class="fixedScroll">
+			<div id="navigation">
+			<div class="fixedScroll">
+				<input class="navButton" id="Button1" onclick="location.href='recipe.html'" value="Recipes" type="submit" name="Button1"> <br /><br />
+				<input class="navButton" id="Button2" onclick="location.href='pantry.html'" value="Pantry" type="submit" name="Button2"> <br /><br />
+				<input class="navButton" id="Button3" onclick="location.href='meal.html'" value="Meals" type="submit" name="Button3"> <br /><br />
+					<a id="MainContent_HyperLink4" class="navItem" href="results.html">[ + ] chicken</a><br />
+					<a id="MainContent_HyperLink5" class="navItem" href="results.html">[ + ] Mexican</a><br />
+					<a id="MainContent_HyperLink6" class="navItem" href="results.html">[ + ] crock-pot</a><br /><br />
+					<a id="MainContent_HyperLink11" class="navItem" href="results.html">MEALS ADDED: 2</a><br /><br />
+				<input class="navButton" id="Button4" onclick="location.href='shopping.html'" value="Shopping" type="submit" name="Button4"> <br /><br />
+			</div>
+			</div>
+			</div>
+		</div>
+		<!-- MAIN CONTENT EDITABLE REGION GOES HERE -->
+		<div id="onecolumn">
+			<h1>Meal Planner Results</h1>
+			<!-- CHECK BOX RESULT SET -->
+			<span class="emphasis">Categories: Chicken, Mexican</span><br><br>
+			<table id="MainContent_CheckBoxList1">
+				<tbody>
+				<tr>
+					<td>
+						<input id="MainContent_CheckBoxList1_0" value="Chicken Enchilada Casserole" 
+						CHECKED type="checkbox" name="ctl00$MainContent$CheckBoxList1$0">
+						<label for="MainContent_CheckBoxList1_0">Chicken Enchilada Casserole</label>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input id="MainContent_CheckBoxList1_1" value="Mexican Chicken Delight" 
+						type="checkbox" name="ctl00$MainContent$CheckBoxList1$1">
+						<label for="MainContent_CheckBoxList1_1">Mexican Chicken Delight</label>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input id="MainContent_CheckBoxList1_2" value="Chicken Quesidillas" 
+						CHECKED type="checkbox" name="ctl00$MainContent$CheckBoxList1$2">
+						<label for="MainContent_CheckBoxList1_2">Chicken Quesidillas</label>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input id="MainContent_CheckBoxList1_3" value="Spanish Chicken Dogs" 
+						type="checkbox" name="ctl00$MainContent$CheckBoxList1$3">
+						<label for="MainContent_CheckBoxList1_3">Spanish Chicken Dogs</label>
+					</td>
+				</tr>
+				</tbody>
+				</table><br>
+			<hr>
+			<br>Meals Added: 2 
+			<div class="largepad">
+				<!-- CONTINUE, SAVE, GO BACK BUTTONS -->
+				<input class="buttonBlackSmall" id="MainContent_Button1" onclick="location.href='meal.html'" value="Continue" type="submit" name="ctl00$MainContent$Button1"> 
+				&nbsp;&nbsp;Save Meals, Continue to Other Categories<br><br>
+				<input class="buttonBlackSmall" id="MainContent_Button2" onclick="location.href='shopping.html'" value="Save" type="submit" name="ctl00$MainContent$Button2"> 
+				&nbsp;&nbsp;Save Meals, Continue to Shopping List<br><br>
+				<input class="buttonBlackSmall" id="MainContent_Button3" onclick="location.href='meal.html'" value="Go back" type="submit" name="ctl00$MainContent$Button3"> 
+				&nbsp;&nbsp;Go back, do NOT Save 
+			</div>
+		</div>
+	</div>
+		<!-- END MAIN CONTENT -->
+		<div class="clearfloat"></div>
+	<!-- FOOTER -->
+	<div id="footer">
+		<p>
+		<span class="disclaimer">
+			This site is for educational purposes only.
+		</span>
+		</p>
+	</div> 
+</div> 
+</div>
+</body>
+</html>
