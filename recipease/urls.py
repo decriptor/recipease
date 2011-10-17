@@ -1,10 +1,12 @@
-from django.conf.urls.defaults import patterns, include, url
+from django.conf.urls.defaults import *
+from django.views.generic.simple import direct_to_template
+import settings
 
-# Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
+    (r'^$', 'recipease.recipe.views.index'),
     # Examples:
     # url(r'^$', 'recipease.views.home', name='home'),
     # url(r'^recipease/', include('recipease.foo.urls')),
@@ -14,4 +16,15 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
+
+    # registration stuff
+    #url(r'^accounts/', include('registration.backends.default.urls')),
+
 )
+
+if settings.DEBUG:
+	urlpatterns += patterns('',
+		(r'^site_media/(?P<path>.*)$', 'django.views.static.serve', {
+			'document_root': settings.MEDIA_ROOT,
+			'show_indexes' :True
+		}))

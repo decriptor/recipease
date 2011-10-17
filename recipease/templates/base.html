@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>{% block title %}Recipease{% endblock %}</title>
+		<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/layout.css" />
+		<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/format.css" />
+	</head>
+
+	<body>
+		<div id="container" style="background-image: url('{{ MEDIA_URL }}images/recipease_bg.gif');">
+			<div id="homelink">
+				<a href=""></a>
+			</div>
+
+			<div id="masthead">
+				<div class="moveright">
+					<p>
+					<a id="HyperLink1" class="noUnderline" href="login.html">log in</a>
+					<a id="HyperLink2" class="noUnderline" href="register.html">register</a>
+					</p>
+				</div>
+			</div>
+			<!-- MAIN CONTENT -->
+			<div id="maincontent">
+				<!-- NAV -->
+				<div id="navigation">
+					<div class="fixedScroll">
+						<div id="navigation">
+							<div class="fixedScroll">
+								<input class="navButton" id="Button1" onclick="location.href='recipe.html'" value="Recipes" type="submit" name="Button1"> <br /><br />
+								<input class="navButton" id="Button2" onclick="location.href='pantry.html'" value="Pantry" type="submit" name="Button2"> <br /><br />
+								<input class="navButton" id="Button3" onclick="location.href='meal.html'" value="Meals" type="submit" name="Button3"> <br /><br />
+								<input class="navButton" id="Button4" onclick="location.href='shopping.html'" value="Shopping" type="submit" name="Button4"> <br /><br />
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- MAIN CONTENT EDITABLE REGION GOES HERE -->
+				<!-- LEFT COLUMN MAIN CONTENT -->
+				<div id="leftcolumn">
+					<div class="largepad">
+						<h1>Welcome to RecipEASE</h1>
+						<p>
+						RecipEASE is your one stop shop for your recipes, items you have in your food pantry, and a 
+						shopping list of the items you still need.
+						</p>
+						<p>
+						After entering your recipes, you will be able to choose your menu for the week/2 weeks/month.  Your 
+						shopping list will be created based off what you need for your recipe and what you already have in 
+						your pantry.
+						</p>
+						<p>
+						For easy entry, use the Pantry Scanner for automatic entry or enter your pantry items manually.
+						</p>
+						<p>
+						Also, for each item in your pantry you can set a minimum amount.  Once you use those items in your menu, 
+						your pantry will update.  Once you reach below the minimum amount, that item will be added to your shopping 
+						list.
+						</p>
+						<p>
+						<span class="emphasis">Bon Appetit!</span>
+						</p>
+					</div>
+				</div>
+				<!-- RIGHT COLUMN MAIN CONTENT -->
+				<div id="rightcolumn">
+					<div class="smallpad">
+						<p>
+						<img style="width: 300px; height: 300px" id="MainContent_Image1" class="imgleft" 
+						alt="Steak and Potatoes" src="{{ MEDIA_URL }}images/recipease_homepage_img.jpg">
+						</p>
+					</div>
+				</div>
+				<!-- END MAIN CONTENT -->
+				<div class="clearfloat"></div>
+			</div> 
+			<!-- FOOTER -->
+			<div id="footer">
+				<p>
+				<span class="disclaimer">
+					This site is for educational purposes only.
+				</span>
+				</p>
+			</div>
+		</div>
+
+	</body>
+</html>
