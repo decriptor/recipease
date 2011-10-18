@@ -6,7 +6,7 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    # ('Your Name', 'your_email@example.com'),
+    ('Stephen Shaw', 'sshaw@decriptor.com'),
 )
 
 MANAGERS = ADMINS
@@ -53,6 +53,8 @@ MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media')
 # trailing slash.
 # Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
 MEDIA_URL = '/media/'
+
+LOGIN_REDIRECT_URL = '/'
 
 # Absolute path to the directory static files should be collected to.
 # Don't put anything in this directory yourself; store your static files
@@ -123,6 +125,7 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
     'registration',
+    'recipes',
 )
 
 # This determines how many days a user has to activate their account before it
