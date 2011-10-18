@@ -28,7 +28,7 @@ def latest(request):
 def create(request):
 	form = RecipeForm(request.POST or None)
 	if form.is_valid():
-		recipe = recipe.save(commit=False)
+		recipe = form.save(commit=False)
 		recipe.creator = request.user
 		recipe.start_date = None
 		recipe.save()
