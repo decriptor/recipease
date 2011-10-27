@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}Settings - {{ block.super }}{% endblock %}
+
+{% block content %}
+    <h1>Settings</h1>
+    <h2>Account settings:</h2>
+    <ul id="settings">
+        <li><a href="{% url auth_password_change %}">Change Your Password</a></li>
+    </ul>
+{% endblock %}

@@ -15,10 +15,18 @@ def index(request):
 
 	return render_to_response('recipes/index.html', context_instance=RequestContext(request))
 
-def latest(request):
+def latest(request, everyone=True):
 	recipes = Recipe.objects.today().filter(latest=True)
+	if request.user.is_authenticated():
+		my_recipes = recipes.filter(creator=request.user)
+		recipes = recipes.exclude(creator=request.user)
+	else:
+		my_recipes = Recipe.objects.none()
+		
 	context = {
 		'recipes' : recipes,
+		'my_recipes' : my_recipes,
+		'recipe_form' : RecipeForm(),
 	}
 	return render_to_response(
 		'recipes/latest.html',
@@ -26,8 +34,9 @@ def latest(request):
 		context_instance = RequestContext(request),
 	)
 
-def archive(request):
+def archive(request, everyone=True):
 	recipes = Recipe.objects.filter(latest=True)
+	
 	context = {
 		'recipes' : recipes,
 	}
