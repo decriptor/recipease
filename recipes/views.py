@@ -5,6 +5,7 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.http import HttpResponseRedirect, HttpResponse
 from django.template import RequestContext
 from django.core.urlresolvers import reverse
+from django.contrib.auth.decorators import login_required
 
 def index(request):
 	recipes = Recipes.objects.today().filter(latest=True)
@@ -25,6 +26,18 @@ def latest(request):
 		context_instance = RequestContext(request),
 	)
 
+def archive(request):
+	recipes = Recipe.objects.filter(latest=True)
+	context = {
+		'recipes' : recipes,
+	}
+	return render_to_response(
+		'recipes/archive.html',
+		context,
+		context_instance = RequestContext(request),
+	)
+
+@login_required
 def create(request):
 	form = RecipeForm(request.POST or None)
 	if form.is_valid():
@@ -43,3 +56,4 @@ def create(request):
 		{'form':form},
 		context_instance = RequestContext(request)
 	)
+

@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 {% load recipes_tags %}
 
-{% block title %} Latest - {{ block.super }}{% endblock %}
+{% block title %} Archive - {{ block.super }}{% endblock %}
 
 {% block content %}
 	<a href="{% url recipe_create %}">Create a recipe</a>
 	{% if recipes %}
 		{% for r in recipes %}
-			{% recipe r %}
+		{% recipe r %}
 		{% endfor %}
 	{% else %}
 	<p>No recipes for today.</p>
