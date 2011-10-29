@@ -34,6 +34,7 @@ def latest(request, everyone=True):
 		context_instance = RequestContext(request),
 	)
 
+@login_required
 def archive(request, everyone=True):
 	recipes = Recipe.objects.filter(latest=True)
 	

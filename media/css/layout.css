@@ -17,7 +17,7 @@ body
     height: 80px;
 }
 
-#masthead
+header
 {
     width:960px;
     height:35px;
@@ -77,10 +77,11 @@ body
     width:250px;
 }
 
-#footer
+footer
 {
     width:960px;
     height:110px;
+    text-align: center;
 }
 
 
