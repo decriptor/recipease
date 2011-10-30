@@ -1,12 +1,14 @@
 {% load i18n %}
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!doctype html>
 <html lang="en">
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset=UTF-8">
 		<title>{% block title %}Recipease{% endblock %}</title>
 		{% block extra_head %}{% endblock %}
-		<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/layout.css" />
-		<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/format.css" />
+		<link rel="stylesheet" href="{{ MEDIA_URL }}css/layout.css" />
+		<link rel="stylesheet" href="{{ MEDIA_URL }}css/format.css" />
+		<script src="{{ MEDIA_URL }}js/jquery.form.js"></script>
+		<script src="{{ MEDIA_URL }}js/global.js"></script>
 	</head>
 
 	<body>
@@ -15,20 +17,21 @@
 				<a href=""></a>
 			</div>
 
-			<div id="masthead">
+			<header>
 				<div class="moveright">
 					<p>
 					{% if user.is_authenticated %}
 					<h3>
-						<p>welcome back, {{ user }}.  &nbsp;[<a href="{% url auth_password_change %}">change password</a> / <a href="{% url auth_logout %}">log out</a>]</p>
+						<a href="{% url settings %}">My Account</a>
+						 <a href="{% url auth_logout %}">log out</a>
 					</h3>
 					{% else %}
-					<p>Welcome! Please <a href="{% url auth_login %}">log in</a></p>
-					<p>not a member yet? <a href="{% url registration.views.register %}">Sign up.</a></p>
+					<p><a href="{% url auth_login %}">log in</a>
+					<a href="{% url registration.views.register %}"> / Sign up</a></p>
 					{% endif %}
 					</p>
 				</div>
-			</div>
+			</header>
 			<!-- MAIN CONTENT -->
 			<div id="maincontent">
 				<!-- NAV -->
@@ -57,14 +60,11 @@
 				<div class="clearfloat"></div>
 			</div> 
 			<!-- FOOTER -->
-			<ul id="footer">
+			<footer>
 				<br>
 				<p><span class="disclaimer">This site is for educational purposes only.</span></p>
 				<p><span>&copy; 2011 Stephen Shaw, Quinn Heiner, Nathan Liddle</span></p>
-			</ul>
-			<script type="text/javascript" src="{{ MEDIA_URL }}js/jquery.form.js"></script>
-			<script type="text/javascript" src="{{ MEDIA_URL }}js/global.js"></script>
-			</div>
+			</footer>
 		</div>
 
 	</body>

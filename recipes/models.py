@@ -4,7 +4,20 @@ from django.contrib.auth.models import User
 from django.db.models.query import QuerySet
 
 class UserProfile (models.Model):
+	'''
+		This is for any additional profile attributes
+		Things provided by the built in User are:
+		  first_name
+		  last_name
+		  email
+		  username
+	'''
 	user = models.OneToOneField (User)
+	phone = models.CharField(max_length=15)
+	created = models.DateTimeField()
+
+	def __unicode__(self):
+		return self.user.first_name + ' ' + self.user.last_name
 
 def today():
 	now = datetime.now()

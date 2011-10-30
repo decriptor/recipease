@@ -22,7 +22,6 @@ urlpatterns = patterns('',
     (r'^admin/', include(admin.site.urls)),
     (r'^accounts/', include('registration.urls')),
     (r'^accounts/login/$', 'django.contrib.auth.views.login'),
-    #    (r'^$', 'recipease.recipe.views.index'),
 )
 
 if settings.DEBUG:
