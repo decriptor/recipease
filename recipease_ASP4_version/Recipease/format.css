@@ -1,0 +1,187 @@
+﻿body
+{
+    background-color: #FFFFFF;
+    padding:0;
+    font-size:medium;
+}
+
+body a
+{
+    color: #000000;
+}
+
+.bodyLink:hover /*mouse over links in the body */
+{
+   color:#000000; 
+   /*background-color: #232F9E;*/
+   font-weight: bold;
+}
+
+hr
+{
+    height: 3px;
+    border: 0;
+    color: #39373A;
+    background-color: #39373A;
+}
+
+a:link {color:#000000;}    /* unvisited link */
+a:visited {color:#000000;} /* visited link */
+a:hover {color:#000000; font-weight: bold;}   /* mouse over link */
+a:active {color:#000000;}  /* selected link */ 
+
+#container
+{
+    background-image: url('recipease_bg.gif');
+    background-repeat: no-repeat;
+    font-family: 'Palatino Linotype', ‘Trebuchet MS’, 'Veranda', serif;
+}
+
+#masthead
+{
+
+}
+
+#masthead p
+{
+    margin-top: -15px;
+}
+
+
+#maincontent
+{
+    overflow: auto;
+}
+
+#navigation
+{
+    /*background-color: #B7C1C2; */
+    color:#000000;
+    margin:0;
+    padding-top: 30px;
+    padding-left: 10px;
+}
+
+#navigation h3 /* for nav menu text */
+{
+    margin:0;
+}
+
+#footer
+{
+    /*background-color:#232F9E;*/
+    text-align:center;
+}
+
+#footer p
+{
+    margin:0;
+    /*padding-top: 12px;*/
+}
+
+.center
+{
+    text-align: center;
+}    
+
+h1
+{
+    font-size:x-large;
+    font-family: 'Palatino Linotype', ‘Trebuchet MS’, 'Veranda', serif;
+}
+
+h2
+{
+    font-size:large;
+    font-family: 'Palatino Linotype', ‘Trebuchet MS’, 'Veranda', serif;
+}
+
+h3
+{
+    font-size:medium;
+    font-family: 'Palatino Linotype', ‘Trebuchet MS’, 'Veranda', serif;
+}
+
+.largepad
+{
+    padding: 15px;
+}
+
+.smallpad
+{
+    padding:10px;
+}
+
+.moveleft
+{
+    text-align:left;
+    margin:0;
+    padding:0;
+}
+
+.moveright
+{
+    text-align:right;
+}
+
+.disclaimer
+{
+    font-size: small;
+    font-weight: bold;
+}
+
+.emphasis
+{
+    font-weight: bold;
+    font-size: large;
+}
+
+.noUnderline
+{
+    text-decoration: none;
+}
+
+.underline
+{
+    text-decoration: underline;
+    text-align: left;
+}
+
+.noUnderline
+{
+    text-decoration: none;
+}
+
+.removeX
+{
+    font-size: large;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.addMore
+{
+    font-size: small;
+    text-decoration: none;
+}
+
+.imgleft
+{
+    /*padding: 8px;
+    padding-top: 2px; */
+    margin-top: 2px;
+    margin-bottom: 2px;
+    border: 8px solid #383639;
+    float: left;
+}
+
+.imgright
+{
+    /*padding: 8px;
+    padding-top: 2px; */
+    margin-top: 2px;
+    margin-bottom: 2px;
+    border: 8px solid #383639;
+    float: right;
+}

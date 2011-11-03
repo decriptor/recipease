@@ -1,0 +1,66 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="RecipeaseMasterPage.master.cs" Inherits="RecipeaseMasterPageNEW" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        <title> </title>
+    </asp:ContentPlaceHolder>
+        <link href="layout.css" rel="stylesheet" type="text/css" />
+        <link href="format.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<form id="form1" runat="server">
+    <div id="container">
+        <div id="homelink">
+            <asp:LinkButton ID="LinkButton1" runat="server" Height="75px" Width="210px" 
+                PostBackUrl="~/Default.aspx"> </asp:LinkButton>
+        </div>
+        <!-- MASTHEAD -->
+        <div id="masthead">
+            <div class="moveright">
+            <div>
+            <p>
+                <asp:LoginName ID="LoginName1" CssClass="noUnderline" runat="server" FormatString="Welcome, {0}. <br />" />
+                <asp:LoginStatus ID="LoginStatus1" CssClass="noUnderline" runat="server" /> &nbsp;&nbsp;/
+                &nbsp;&nbsp;<asp:HyperLink ID="HyperLink1" CssClass="noUnderline" runat="server" NavigateUrl="~/register.aspx">Register</asp:HyperLink>
+            </p>
+            </div>
+            </div>
+        </div>
+
+        <!-- MAIN CONTENT -->
+        <div id="maincontent">
+            <!-- NAV -->
+            <div id="navigation">
+                <div class="fixedScroll">
+                <asp:Button ID="Button1" SkinID="Navigation"
+                    runat="server" Text="Recipes" PostBackUrl="~/Recipes/index.aspx" /> <br /><br />
+                <asp:Button ID="Button2" SkinID="Navigation"
+                    runat="server" Text="Pantry" PostBackUrl="~/Pantry/index.aspx" /> <br /><br />
+                <asp:Button ID="Button3" SkinID="Navigation"
+                    runat="server" Text="Meals" PostBackUrl="~/Meals/index.aspx" /> <br /><br />
+                <asp:Button ID="Button4" SkinID="Navigation"
+                    runat="server" Text="Shopping" PostBackUrl="~/Shopping/index.aspx" /> <br /><br />
+                </div>
+            </div>
+            <!-- MAIN CONTENT -->
+                <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                </asp:ContentPlaceHolder>
+            <div class="clearfloat"></div>
+        </div> 
+
+        <!-- FOOTER -->
+        <div id="footer">
+
+            <span class="disclaimer">
+                Last modified: <asp:Label ID="UpdateLBL" runat="server" Text=" "> <%=LastModified.ToString() %> </asp:Label>
+            </span>
+         
+        </div> 
+    </div>
+</form>
+</body>
+</html>
