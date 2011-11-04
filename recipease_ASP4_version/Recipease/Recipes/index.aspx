@@ -57,7 +57,6 @@
             ConflictDetection="CompareAllValues"
             ConnectionString="<%$ ConnectionStrings:INFO3420_12ConnectionString %>" 
             OldValuesParameterFormatString="original_{0}"
-
             SelectCommand="SELECT * FROM [RECIPEASE_RECIPE] WHERE ([rec_id] = @rec_id)" 
             DeleteCommand="DELETE FROM [RECIPEASE_RECIPE] WHERE [rec_id] = @original_rec_id" 
             InsertCommand="INSERT INTO [RECIPEASE_RECIPE] ([rec_name], [rec_desc], [rec_prep_time], [rec_cook_time], [rec_cook_temp], [rec_ready_time], [rec_serving_size], [rec_date], [rec_image_path], [rec_owner], [rec_rating], [rec_directions]) VALUES (@rec_name, @rec_desc, @rec_prep_time, @rec_cook_time, @rec_cook_temp, @rec_ready_time, @rec_serving_size, @rec_date, @rec_image_path, @rec_owner, @rec_rating, @rec_directions)" 
@@ -102,12 +101,16 @@
 
         <!-- details view for updating/deleting -->
         <div>
+        <br />
         <br /><br />Details for selected recipe:<br /><br />
-        <asp:Label ID="ErrorLBL" runat="server" EnableViewState="false">Test</asp:Label>
+        <asp:Label ID="ErrorLBL" runat="server" EnableViewState="false"></asp:Label>
         <asp:DetailsView ID="DetailsView1" runat="server" Height="50px" Width="300px" 
             BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" 
             CellPadding="3" ForeColor="Black" DataSourceID="RecipeaseDetailsViewSDS" 
-            AutoGenerateRows="False" DataKeyNames="rec_id">
+            AutoGenerateRows="False" DataKeyNames="rec_id" 
+                onitemdeleting="DetailsView1_ItemDeleting" 
+                onitemdeleted="DetailsView1_ItemDeleted" 
+                onitemupdated="DetailsView1_ItemUpdated">
             <AlternatingRowStyle BackColor="#CCCCCC" />
             <EditRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
             <EmptyDataTemplate>

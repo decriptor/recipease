@@ -4,6 +4,7 @@
     <title>Recipease - Add a Recipe</title>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
+    <!-- SQL Data source for processing inserts into the RECIPE table -->
     <asp:SqlDataSource ID="RecipeaseSDS" runat="server" 
         ConnectionString="<%$ ConnectionStrings:INFO3420_12ConnectionString %>" 
         DeleteCommand="DELETE FROM [RECIPEASE_RECIPE] WHERE [rec_id] = @rec_id" 
@@ -66,12 +67,14 @@
         <asp:TextBox ID="ServingSizeTXT" runat="server" Height="25px" Width="71px" SkinID="SmallText" onfocus="if(this.value=='Serving Size') this.value='';" ToolTip="Serving Size">Serving Size</asp:TextBox>&nbsp;<br /><br />
         <asp:TextBox ID="RecipeDescriptionTXT" runat="server" Height="55px" Width="660px" onfocus="if(this.value=='Recipe Description') this.value='';" ToolTip="Recipe Description">Recipe Description</asp:TextBox>&nbsp;
         <asp:TextBox ID="RatingTXT" runat="server" Height="25px" Width="71px" SkinID="SmallText" onfocus="if(this.value=='Rating (1-5)') this.value='';" ToolTip="Rating (1-5)">Rating (1-5)</asp:TextBox><br /><br />
-        <!-- HEADER ROW FOR INGREDIENT INFO WILL GO HERE-->
+        <!-- HEADER ROW FOR INGREDIENTS INFO CAN GO HERE-->
         <!-- ROW 1 -->
+        <!-- SQL data source for the AMOUNT drop down lists -->
         <asp:SqlDataSource ID="UnitsSDS" runat="server" 
             ConnectionString="<%$ ConnectionStrings:INFO3420_12ConnectionString %>" 
             SelectCommand="SELECT * FROM [RECIPEASE_UNIT]">
         </asp:SqlDataSource>
+        <!-- SQL data source for insertions into the INGREDIENT table -->
         <asp:SqlDataSource ID="IngredientSDS" runat="server" 
             ConnectionString="<%$ ConnectionStrings:INFO3420_12ConnectionString %>" 
             DeleteCommand="DELETE FROM [RECIPEASE_INGREDIENT] WHERE [ing_id] = @ing_id" 
@@ -92,6 +95,8 @@
             </UpdateParameters>
         </asp:SqlDataSource>
 
+        <!-- QUANTITY, AMOUNT, and INGREDIENT controls -->
+        <!-- ROW 1 -->
         <asp:TextBox ID="Quantity01TXT" runat="server" Height="27px" Width="35px" 
             onfocus="if(this.value=='Qty') this.value='';" ToolTip="Quantity">Qty</asp:TextBox>&nbsp;
         <asp:DropDownList ID="Amount01DDL" runat="server" DataSourceID="UnitsSDS" 
@@ -139,6 +144,7 @@
             onfocus="if(this.value=='Ingredient') this.value='';" ToolTip="Ingredient">Ingredient</asp:TextBox>&nbsp;&nbsp;<br />
        <!--     <asp:HyperLink ID="HyperLink21" runat="server" CssClass="addMore" 
                 NavigateUrl="~/Recipes/addRecipe.aspx">[ + ] add more ingredients</asp:HyperLink><br /><br /> -->
+        
         <!-- DIRECTIONS -->
         <asp:TextBox ID="DirectionsTXT" runat="server" Height="70px" Width="690px" 
             onfocus="if(this.value=='Directions') this.value='';" ToolTip="Directions">Directions</asp:TextBox><br /><br />
@@ -152,7 +158,7 @@
             SelectCommand="SELECT * FROM [RECIPEASE_TAG]" >
         </asp:SqlDataSource>
         <asp:ListBox ID="TagsLBX" runat="server" Rows="6" ToolTip="Tags" 
-            DataSourceID="TagsSDS" DataTextField="tag_name" DataValueField="tag_id" 
+            DataSourceID="TagsSDS" DataTextField="tag_name" DataValueField="tag_name" 
             SelectionMode="Multiple"></asp:ListBox> <br /><br />
         <!-- ADD, RESET, CANCEL BUTTONS -->
         <asp:Button ID="AddRecipeBTN" SkinID="BlackButton" runat="server" Text="Add" 

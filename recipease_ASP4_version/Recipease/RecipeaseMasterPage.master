@@ -23,6 +23,7 @@
             <div class="moveright">
             <div>
             <p>
+                <br />
                 <asp:LoginName ID="LoginName1" CssClass="noUnderline" runat="server" FormatString="Welcome, {0}. <br />" />
                 <asp:LoginStatus ID="LoginStatus1" CssClass="noUnderline" runat="server" /> &nbsp;&nbsp;/
                 &nbsp;&nbsp;<asp:HyperLink ID="HyperLink1" CssClass="noUnderline" runat="server" NavigateUrl="~/register.aspx">Register</asp:HyperLink>

@@ -14,13 +14,6 @@ public partial class Recipes_addRecipe : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        Amount01DDL.SelectedIndex = 0; // drop downs for unit amounts will display the default text
-        Amount02DDL.SelectedIndex = 0;
-        Amount03DDL.SelectedIndex = 0;
-        Amount04DDL.SelectedIndex = 0;
-        Amount05DDL.SelectedIndex = 0;
-        Amount06DDL.SelectedIndex = 0;
-
         // Page.Form.DefaultFocus = RecipeNameTXT.ClientID; // DO NOT USE - will erase default text of textbox
         this.Form.DefaultButton = this.AddRecipeBTN.UniqueID; // default button when enter is pressed
     }
@@ -87,32 +80,32 @@ public partial class Recipes_addRecipe : System.Web.UI.Page
 
             // now that recipe has been created, insert form data as new row(s) in the INGREDIENT table 
             // ONLY insert new row if ing_name does not exist -- NATHAN needs to add this db trigger/sproc
-            if (Ingredient01TXT.Text != "Ingredient" || Ingredient01TXT.Text !="")
+            if (Ingredient01TXT.Text != "Ingredient" && Ingredient01TXT.Text != "")
             {
                 IngredientSDS.InsertParameters["ing_name"].DefaultValue = Ingredient01TXT.Text;
                 IngredientSDS.Insert(); // perform actual insert
             }
-            if (Ingredient02TXT.Text != "Ingredient")
+            if (Ingredient02TXT.Text != "Ingredient" && Ingredient02TXT.Text != "")
             {
                 IngredientSDS.InsertParameters["ing_name"].DefaultValue = Ingredient02TXT.Text;
                 IngredientSDS.Insert();
             }
-            if (Ingredient03TXT.Text != "Ingredient")
+            if (Ingredient03TXT.Text != "Ingredient" && Ingredient03TXT.Text != "")
             {
                 IngredientSDS.InsertParameters["ing_name"].DefaultValue = Ingredient03TXT.Text;
                 IngredientSDS.Insert();
             }
-            if (Ingredient04TXT.Text != "Ingredient")
+            if (Ingredient04TXT.Text != "Ingredient" && Ingredient04TXT.Text != "")
             {
                 IngredientSDS.InsertParameters["ing_name"].DefaultValue = Ingredient04TXT.Text;
                 IngredientSDS.Insert();
             }
-            if (Ingredient05TXT.Text != "Ingredient")
+            if (Ingredient05TXT.Text != "Ingredient" && Ingredient05TXT.Text != "")
             {
                 IngredientSDS.InsertParameters["ing_name"].DefaultValue = Ingredient05TXT.Text;
                 IngredientSDS.Insert();
             }
-            if (Ingredient06TXT.Text != "Ingredient")
+            if (Ingredient06TXT.Text != "Ingredient" && Ingredient06TXT.Text != "")
             {
                 IngredientSDS.InsertParameters["ing_name"].DefaultValue = Ingredient06TXT.Text;
                 IngredientSDS.Insert();
@@ -142,9 +135,8 @@ public partial class Recipes_addRecipe : System.Web.UI.Page
                 SqlCommand insert05 = new SqlCommand("insert_into_RECIPE_INGREDIENT", myConnection);
                 SqlCommand insert06 = new SqlCommand("insert_into_RECIPE_INGREDIENT", myConnection);
 
-
-                //3. set up sprocs with proper values
-                if (Ingredient01TXT.Text != "Ingredient")
+                //3. set up sprocs with proper values and execute!
+                if (Ingredient01TXT.Text != "Ingredient" && Ingredient01TXT.Text != "")
                 {
                     insert01.CommandType = CommandType.StoredProcedure;
                     insert01.Parameters.Add("@rec_id", SqlDbType.Int).Value = 0;
@@ -152,11 +144,11 @@ public partial class Recipes_addRecipe : System.Web.UI.Page
                     insert01.Parameters.AddWithValue("@ing_name", Ingredient01TXT.Text);
                     insert01.Parameters.AddWithValue("@rec_ing_quantity", Convert.ToDecimal(Quantity01TXT.Text));
                     insert01.Parameters.Add("@unit_id", SqlDbType.Int).Value = 0;
-                    insert01.Parameters.AddWithValue("@unit_name", Convert.ToString(Amount01DDL.SelectedValue));
+                    insert01.Parameters.AddWithValue("@unit_name", Amount01DDL.SelectedValue);
                     insert01.ExecuteNonQuery(); //execute the sproc
                 }
 
-                if (Ingredient02TXT.Text != "Ingredient")
+                if (Ingredient02TXT.Text != "Ingredient" && Ingredient02TXT.Text != "")
                 {
                     insert02.CommandType = CommandType.StoredProcedure;
                     insert02.Parameters.Add("@rec_id", SqlDbType.Int).Value = 0;
@@ -168,7 +160,7 @@ public partial class Recipes_addRecipe : System.Web.UI.Page
                     insert02.ExecuteNonQuery(); //execute the sproc
                 }
 
-                if (Ingredient03TXT.Text != "Ingredient")
+                if (Ingredient03TXT.Text != "Ingredient" && Ingredient03TXT.Text != "")
                 {
                     insert03.CommandType = CommandType.StoredProcedure;
                     insert03.Parameters.Add("@rec_id", SqlDbType.Int).Value = 0;
@@ -180,7 +172,7 @@ public partial class Recipes_addRecipe : System.Web.UI.Page
                     insert03.ExecuteNonQuery(); //execute the sproc
                 }
 
-                if (Ingredient04TXT.Text != "Ingredient")
+                if (Ingredient04TXT.Text != "Ingredient" && Ingredient04TXT.Text != "")
                 {
                     insert04.CommandType = CommandType.StoredProcedure;
                     insert04.Parameters.Add("@rec_id", SqlDbType.Int).Value = 0;
@@ -192,7 +184,7 @@ public partial class Recipes_addRecipe : System.Web.UI.Page
                     insert04.ExecuteNonQuery(); //execute the sproc
                 }
 
-                if (Ingredient05TXT.Text != "Ingredient")
+                if (Ingredient05TXT.Text != "Ingredient" && Ingredient05TXT.Text != "")
                 {
                     insert05.CommandType = CommandType.StoredProcedure;
                     insert05.Parameters.Add("@rec_id", SqlDbType.Int).Value = 0;
@@ -204,7 +196,7 @@ public partial class Recipes_addRecipe : System.Web.UI.Page
                     insert05.ExecuteNonQuery(); //execute the sproc
                 }
 
-                if (Ingredient06TXT.Text != "Ingredient")
+                if (Ingredient06TXT.Text != "Ingredient" && Ingredient06TXT.Text != "")
                 {
                     insert06.CommandType = CommandType.StoredProcedure;
                     insert06.Parameters.Add("@rec_id", SqlDbType.Int).Value = 0;
@@ -215,6 +207,20 @@ public partial class Recipes_addRecipe : System.Web.UI.Page
                     insert06.Parameters.AddWithValue("@unit_name", Convert.ToString(Amount06DDL.SelectedValue));
                     insert06.ExecuteNonQuery(); //execute the sproc
                 }
+
+                // loop through items in the TAG list box and insert user-selected values into the TAG table
+                foreach (ListItem item in TagsLBX.Items)
+                {
+                    if (item.Selected)
+                    {
+                        SqlCommand insertTAG = new SqlCommand("insert_into_RECIPE_TAG", myConnection);
+                        insertTAG.CommandType = CommandType.StoredProcedure;
+                        insertTAG.Parameters.Add("@rec_id", SqlDbType.Int).Value = 0;
+                        insertTAG.Parameters.Add("@tag_id", SqlDbType.Int).Value = 0;
+                        insertTAG.Parameters.AddWithValue("@tag_name", item.Text);
+                        insertTAG.ExecuteNonQuery(); //execute the sproc
+                    }
+                } 
 
                 // 4.  close the Connection object for the context
                 myConnection.Close();
@@ -228,18 +234,6 @@ public partial class Recipes_addRecipe : System.Web.UI.Page
             }
             /*** INSERT QUERIES END ***/
 
-            // loop through items in tag list and insert values into tag database
-            /*foreach (ListItem item in ListBox1.Items)
-            {
-
-                if (item.Selected)
-                {
-
-                    Response.Write("Im Selected");
-                }
-
-            } */
- 
             // reset stuff to default values if insert succeeds
             RecipeNameTXT.Text = "Recipe Name";
             RecipeDescriptionTXT.Text = "Recipe Description";
@@ -269,6 +263,15 @@ public partial class Recipes_addRecipe : System.Web.UI.Page
             Amount04DDL.SelectedIndex = 0;
             Amount05DDL.SelectedIndex = 0;
             Amount06DDL.SelectedIndex = 0;
+            TagsLBX.SelectedIndex = -1; // resets all listbox selections
+
+            foreach (ListItem item in TagsLBX.Items)
+            {
+                if (item.Selected)
+                {
+                    item.Selected = false;
+                }
+            }
 
             // go back to main recipe page if insert succeeds
             Response.Redirect("index.aspx");
@@ -310,5 +313,6 @@ public partial class Recipes_addRecipe : System.Web.UI.Page
             Amount04DDL.SelectedIndex = 0;
             Amount05DDL.SelectedIndex = 0;
             Amount06DDL.SelectedIndex = 0;
+            TagsLBX.SelectedIndex = -1;
     }
 }
