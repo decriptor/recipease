@@ -77,21 +77,24 @@
         <!-- SQL data source for insertions into the INGREDIENT table -->
         <asp:SqlDataSource ID="IngredientSDS" runat="server" 
             ConnectionString="<%$ ConnectionStrings:INFO3420_12ConnectionString %>" 
-            DeleteCommand="DELETE FROM [RECIPEASE_INGREDIENT] WHERE [ing_id] = @ing_id" 
-            InsertCommand="INSERT INTO [RECIPEASE_INGREDIENT] ([ing_name], [ing_desc]) VALUES (@ing_name, @ing_desc)" 
-            SelectCommand="SELECT * FROM [RECIPEASE_INGREDIENT]" 
-            UpdateCommand="UPDATE [RECIPEASE_INGREDIENT] SET [ing_name] = @ing_name, [ing_desc] = @ing_desc WHERE [ing_id] = @ing_id">
+            DeleteCommand="DELETE FROM [RECIPEASE_RECIPE_INGREDIENT] WHERE [rec_id] = @rec_id" 
+            InsertCommand="INSERT INTO [RECIPEASE_RECIPE_INGREDIENT] ([rec_id], [ing_name], [rec_ing_quantity], [unit_id]) VALUES (@rec_id, @ing_name, @rec_ing_quantity, @unit_id)" 
+            SelectCommand="SELECT * FROM [RECIPEASE_RECIPE_INGREDIENT]" 
+            UpdateCommand="UPDATE [RECIPEASE_RECIPE_INGREDIENT] SET [ing_name] = @ing_name, [rec_ing_quantity] = @rec_ing_quantity, [unit_id] = @unit_id WHERE [rec_id] = @rec_id">
             <DeleteParameters>
-                <asp:Parameter Name="ing_id" Type="Int32" />
+                <asp:Parameter Name="rec_id" Type="Int32" />
             </DeleteParameters>
             <InsertParameters>
+                <asp:Parameter Name="rec_id" Type="Int32" />
                 <asp:Parameter Name="ing_name" Type="String" />
-                <asp:Parameter Name="ing_desc" Type="String" />
+                <asp:Parameter Name="rec_ing_quantity" Type="Decimal" />
+                <asp:Parameter Name="unit_id" Type="Int32" />
             </InsertParameters>
             <UpdateParameters>
                 <asp:Parameter Name="ing_name" Type="String" />
-                <asp:Parameter Name="ing_desc" Type="String" />
-                <asp:Parameter Name="ing_id" Type="Int32" />
+                <asp:Parameter Name="rec_ing_quantity" Type="Decimal" />
+                <asp:Parameter Name="unit_id" Type="Int32" />
+                <asp:Parameter Name="rec_id" Type="Int32" />
             </UpdateParameters>
         </asp:SqlDataSource>
 

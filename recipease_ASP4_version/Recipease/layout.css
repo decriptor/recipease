@@ -51,12 +51,14 @@
 #leftcolumn
 {
     width:420px;
+    height: 1000px;
     float:left;
 }
 
 #rightcolumn
 {
     width:360px;
+    height: 1000px;
     float:left;
 }
 

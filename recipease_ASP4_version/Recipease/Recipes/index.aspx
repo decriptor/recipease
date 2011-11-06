@@ -58,26 +58,12 @@
             ConnectionString="<%$ ConnectionStrings:INFO3420_12ConnectionString %>" 
             OldValuesParameterFormatString="original_{0}"
             SelectCommand="SELECT * FROM [RECIPEASE_RECIPE] WHERE ([rec_id] = @rec_id)" 
-            DeleteCommand="DELETE FROM [RECIPEASE_RECIPE] WHERE [rec_id] = @original_rec_id" 
-            InsertCommand="INSERT INTO [RECIPEASE_RECIPE] ([rec_name], [rec_desc], [rec_prep_time], [rec_cook_time], [rec_cook_temp], [rec_ready_time], [rec_serving_size], [rec_date], [rec_image_path], [rec_owner], [rec_rating], [rec_directions]) VALUES (@rec_name, @rec_desc, @rec_prep_time, @rec_cook_time, @rec_cook_temp, @rec_ready_time, @rec_serving_size, @rec_date, @rec_image_path, @rec_owner, @rec_rating, @rec_directions)" 
+            DeleteCommand="DELETE FROM [RECIPEASE_RECIPE] WHERE ([rec_id] = @rec_id)" 
             UpdateCommand="UPDATE [RECIPEASE_RECIPE] SET [rec_name] = @rec_name, [rec_desc] = @rec_desc, [rec_prep_time] = @rec_prep_time, [rec_cook_time] = @rec_cook_time, [rec_cook_temp] = @rec_cook_temp, [rec_ready_time] = @rec_ready_time, [rec_serving_size] = @rec_serving_size, [rec_date] = @cur_date, [rec_image_path] = @rec_image_path, [rec_rating] = @rec_rating, [rec_directions] = @rec_directions WHERE [rec_id] = @original_rec_id">
             <DeleteParameters>
-                <asp:Parameter Name="rec_id" Type="Int32" />
+                <asp:ControlParameter ControlID="GridView1" Name="rec_id" 
+                    PropertyName="SelectedValue" Type="Int32" />
             </DeleteParameters>
-            <InsertParameters>
-                <asp:Parameter Name="rec_name" Type="String" />
-                <asp:Parameter Name="rec_desc" Type="String" />
-                <asp:Parameter Name="rec_prep_time" Type="String" />
-                <asp:Parameter Name="rec_cook_time" Type="String" />
-                <asp:Parameter Name="rec_cook_temp" Type="String" />
-                <asp:Parameter Name="rec_ready_time" Type="String" />
-                <asp:Parameter Name="rec_serving_size" Type="String" />
-                <asp:Parameter Name="rec_date" Type="DateTime" />
-                <asp:Parameter Name="rec_image_path" Type="String" />
-                <asp:Parameter Name="rec_owner" Type="String" />
-                <asp:Parameter Name="rec_rating" Type="Byte" />
-                <asp:Parameter Name="rec_directions" Type="String" />
-            </InsertParameters>
             <SelectParameters>
                 <asp:ControlParameter ControlID="GridView1" Name="rec_id" 
                     PropertyName="SelectedValue" Type="Int32" />
@@ -110,7 +96,8 @@
             AutoGenerateRows="False" DataKeyNames="rec_id" 
                 onitemdeleting="DetailsView1_ItemDeleting" 
                 onitemdeleted="DetailsView1_ItemDeleted" 
-                onitemupdated="DetailsView1_ItemUpdated">
+                onitemupdated="DetailsView1_ItemUpdated"
+                onitemupdating="DetailsView1_ItemUpdating">
             <AlternatingRowStyle BackColor="#CCCCCC" />
             <EditRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
             <EmptyDataTemplate>
@@ -198,8 +185,9 @@
                         <asp:Label ID="Label7" runat="server" Text='<%# Bind("rec_serving_size") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="Upload image" SortExpression="rec_image_path">
+                <asp:TemplateField HeaderText="Current Upload Image" SortExpression="rec_image_path">
                     <EditItemTemplate>
+                        <asp:Label ID="FileUploadLBL" runat="server" Text='<%# Bind("rec_image_path") %>'></asp:Label>
                         <asp:FileUpload ID="FileUpload1" runat="server"/> 
                     </EditItemTemplate>
                     <InsertItemTemplate>
@@ -231,18 +219,40 @@
                         <asp:Label ID="Label10" runat="server" Text='<%# Bind("rec_directions") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
+                <asp:TemplateField HeaderText="Ingredients">
+                    <EditItemTemplate>
+                        <asp:Label ID="Label11" runat="server" Text="Must save before editing ingredients"></asp:Label>
+                    </EditItemTemplate>
+                    <InsertItemTemplate>
+                        <asp:Label ID="Label12" runat="server" Text="Must save before editing ingredients"></asp:Label>
+                    </InsertItemTemplate>
+                    <ItemTemplate>
+                        <asp:HyperLink ID="editIngredientsLINK" runat="server" NavigateUrl='<%# "~/Recipes/ingredients.aspx?rec_id=" + Eval("rec_id") + "&rec_name=" + Eval("rec_name") %>'>View/Edit Ingredients</asp:HyperLink>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Tags">
+                    <EditItemTemplate>
+                        <asp:Label ID="Label13" runat="server" Text="Must save before editing tags"></asp:Label>
+                    </EditItemTemplate>
+                    <InsertItemTemplate>
+                        <asp:Label ID="Label14" runat="server" Text="Must save before editing tags"></asp:Label>
+                    </InsertItemTemplate>
+                    <ItemTemplate>
+                        <asp:HyperLink ID="editTagsLINK" runat="server" NavigateUrl='<%# "~/Recipes/tags.aspx?rec_id=" + Eval("rec_id") + "&rec_name=" + Eval("rec_name") %>'>View/Edit Tags</asp:HyperLink>
+                    </ItemTemplate>
+                </asp:TemplateField>
                 <asp:TemplateField ShowHeader="False">
                     <EditItemTemplate>
                         <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="True" 
                             CommandName="Update" Text="Update"></asp:LinkButton>
                         &nbsp;<asp:LinkButton ID="LinkButton2" runat="server" CausesValidation="False" 
-                            CommandName="Cancel" Text="Cancel"></asp:LinkButton>
+                            CommandName="Cancel" Text="Cancel "></asp:LinkButton>
                     </EditItemTemplate>
                     <ItemTemplate>
-                        <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="False" 
-                            CommandName="Edit" Text="Edit Recipe"></asp:LinkButton>
-                        &nbsp;<asp:LinkButton ID="LinkButton2" runat="server" CausesValidation="False" 
-                            CommandName="Delete" Text="Delete Recipe"></asp:LinkButton>
+                        <asp:LinkButton ID="LinkButton3" runat="server" CausesValidation="False" 
+                            CommandName="Edit" Text="Edit Recipe "></asp:LinkButton>
+                        &nbsp;<asp:LinkButton ID="LinkButton4" runat="server" CausesValidation="False" 
+                            CommandName="Delete" Text="Delete Recipe "></asp:LinkButton>
                     </ItemTemplate>
                 </asp:TemplateField>
             </Fields>

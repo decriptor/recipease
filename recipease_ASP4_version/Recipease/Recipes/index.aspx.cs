@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.IO;
 using System.Data.SqlClient;      // For the database connections and objects.
 using Microsoft.SqlServer.Server;
 using System.Configuration;
@@ -53,7 +54,7 @@ public partial class Recipes_index : System.Web.UI.Page
         myConnection.Open();
 
         // 2.  create new sql command object to write to the database
-        SqlCommand delete = new SqlCommand("delete_from_RECIPE", myConnection);
+        SqlCommand delete = new SqlCommand("delete_RECIPE", myConnection);
 
         // 3. set up sprocs with proper values and execute!
         delete.CommandType = CommandType.StoredProcedure;
@@ -81,6 +82,26 @@ public partial class Recipes_index : System.Web.UI.Page
         {
             GridView1.DataBind();
             ErrorLBL.Text = "Recipe successfully deleted.";
+        }
+    }
+
+    protected void DetailsView1_ItemUpdating(object sender, DetailsViewUpdateEventArgs e)
+    {
+        FileUpload FileUpload1 = (FileUpload)DetailsView1.FindControl("FileUpload1");
+
+        //string currentFilename = FileUploadLBL.TXT;  // need to find a way to access this label!
+
+        string FileName = Path.GetFileName(FileUpload1.FileName); // stores relative filename path of uploaded image
+
+        if (FileName != "")  // && FileName != currentFilename
+        {
+            FileName = "~/Images/Recipes/" + FileName;
+            FileUpload1.SaveAs(Server.MapPath(FileName));
+            RecipeaseDetailsViewSDS.UpdateParameters["rec_image_path"].DefaultValue = FileName;
+        }
+        else
+        {
+            FileName = "";
         }
     }
 }
