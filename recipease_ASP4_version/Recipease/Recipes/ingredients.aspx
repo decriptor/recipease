@@ -10,8 +10,9 @@
         <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Recipes/index.aspx">Return to recipes</asp:HyperLink><br /><br />
     </p>  
     <p>
-        <asp:Label ID="ErrorsLBL" CssClass="emphasis" runat="server" Text=""></asp:Label>
+        <asp:Label ID="ErrorsLBL" CssClass="emphasis" runat="server" SkinID="errorLabel" Text=""></asp:Label>
     </p>
+
     <!-- data source for GridView -->
     <asp:SqlDataSource ID="IngredientSDS" runat="server" 
         ConnectionString="<%$ ConnectionStrings:INFO3420_12ConnectionString %>" 
@@ -82,10 +83,10 @@
                 <HeaderStyle Width="5px"></HeaderStyle>
             </asp:TemplateField>
             
-            <asp:TemplateField HeaderText="Amount" SortExpression="unit_name" HeaderStyle-Width="5px" ItemStyle-Width="50px">
+            <asp:TemplateField HeaderText="Amount" SortExpression="unit_name" HeaderStyle-Width="5px" ItemStyle-Width="30px">
                 <EditItemTemplate>
                     <asp:DropDownList ID="AmountDDL" DataSourceID="UnitsSDS" runat="server" 
-                    DataTextField="unit_name" SelectedValue='<%# Bind("unit_id") %>' DataValueField="unit_id">
+                    DataTextField="unit_name" SelectedValue='<%# Bind("unit_id") %>' DataValueField="unit_id" Width="75px">
                     </asp:DropDownList>
                 </EditItemTemplate>
                 <ItemTemplate>
@@ -119,6 +120,7 @@
     </asp:GridView>
     <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 </div>
+
 <div id="rightcolumn, smallpad" style="margin-left: 25px;">
     <p>
     <br /><br /><br />Add new ingredients to recipe: <%=Request.QueryString["rec_name"] %>
@@ -130,52 +132,113 @@
         SelectCommand="SELECT * FROM [RECIPEASE_UNIT]">
     </asp:SqlDataSource>
 
-        <!-- QUANTITY, AMOUNT, and INGREDIENT controls -->
-    <asp:TextBox ID="Quantity01TXT" runat="server" Height="27px" Width="35px" 
-        onfocus="if(this.value=='Qty') this.value='';" ToolTip="Quantity">Qty</asp:TextBox>
-    <asp:DropDownList ID="Amount01DDL" runat="server" DataSourceID="UnitsSDS" 
-        DataTextField="unit_name" DataValueField="unit_name" Height="27px" 
-        ToolTip="Amount"></asp:DropDownList>&nbsp;
-    <asp:TextBox ID="Ingredient01TXT" runat="server" Height="27px" Width="155px" 
-        onfocus="if(this.value=='Ingredient') this.value='';" ToolTip="Ingredient">Ingredient</asp:TextBox><br />
-        <!-- <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/Images/barcode_icon_2.jpg" ToolTip="Scan Item" />&nbsp; -->
-    <asp:TextBox ID="Quantity02TXT" runat="server" Height="27px" Width="35px" 
-        onfocus="if(this.value=='Qty') this.value='';" ToolTip="Quantity">Qty</asp:TextBox>
-    <asp:DropDownList ID="Amount02DDL" runat="server" DataSourceID="UnitsSDS" 
-        DataTextField="unit_name" DataValueField="unit_name" Height="27px" 
-        ToolTip="Amount"></asp:DropDownList>&nbsp;
-    <asp:TextBox ID="Ingredient02TXT" runat="server" Height="27px" Width="155px" 
-        onfocus="if(this.value=='Ingredient') this.value='';" ToolTip="Ingredient">Ingredient</asp:TextBox><br />
-    <asp:TextBox ID="Quantity03TXT" runat="server" Height="27px" Width="35px" 
-        onfocus="if(this.value=='Qty') this.value='';" ToolTip="Quantity">Qty</asp:TextBox>
-    <asp:DropDownList ID="Amount03DDL" runat="server" DataSourceID="UnitsSDS" 
-        DataTextField="unit_name" DataValueField="unit_name" Height="27px" 
-        ToolTip="Amount"></asp:DropDownList>&nbsp;
-    <asp:TextBox ID="Ingredient03TXT" runat="server" Height="27px" Width="155px" 
-        onfocus="if(this.value=='Ingredient') this.value='';" ToolTip="Ingredient">Ingredient</asp:TextBox><br />
-    <asp:TextBox ID="Quantity04TXT" runat="server" Height="27px" Width="35px" 
-        onfocus="if(this.value=='Qty') this.value='';" ToolTip="Quantity">Qty</asp:TextBox>
-    <asp:DropDownList ID="Amount04DDL" runat="server" DataSourceID="UnitsSDS" 
-        DataTextField="unit_name" DataValueField="unit_name" Height="27px" 
-        ToolTip="Amount"></asp:DropDownList>&nbsp;
-    <asp:TextBox ID="Ingredient04TXT" runat="server" Height="27px" Width="155px" 
-        onfocus="if(this.value=='Ingredient') this.value='';" ToolTip="Ingredient">Ingredient</asp:TextBox><br />
-    <asp:TextBox ID="Quantity05TXT" runat="server" Height="27px" Width="35px" 
-        onfocus="if(this.value=='Qty') this.value='';" ToolTip="Quantity">Qty</asp:TextBox>
-    <asp:DropDownList ID="Amount05DDL" runat="server" DataSourceID="UnitsSDS" 
-        DataTextField="unit_name" DataValueField="unit_name" Height="27px" 
-        ToolTip="Amount"></asp:DropDownList>&nbsp; 
-    <asp:TextBox ID="Ingredient05TXT" runat="server" Height="27px" Width="155px" 
-        onfocus="if(this.value=='Ingredient') this.value='';" ToolTip="Ingredient">Ingredient</asp:TextBox><br />
-    <asp:TextBox ID="Quantity06TXT" runat="server" Height="27px" Width="35px" 
-        onfocus="if(this.value=='Qty') this.value='';" ToolTip="Quantity">Qty</asp:TextBox>
-    <asp:DropDownList ID="Amount06DDL" runat="server" DataSourceID="UnitsSDS" 
-        DataTextField="unit_name" DataValueField="unit_name" Height="27px" 
-        ToolTip="Amount"></asp:DropDownList>&nbsp;
-    <asp:TextBox ID="Ingredient06TXT" runat="server" Height="27px" Width="155px" 
-        onfocus="if(this.value=='Ingredient') this.value='';" ToolTip="Ingredient">Ingredient</asp:TextBox><br />
-    <!--     <asp:HyperLink ID="HyperLink21" runat="server" CssClass="addMore" 
-            NavigateUrl="~/Recipes/addRecipe.aspx">[ + ] add more ingredients</asp:HyperLink><br /><br /> -->
+    <!-- QUANTITY, AMOUNT, and INGREDIENT controls -->
+        <table>
+        <!-- ROW 1 -->
+        <tr>
+            <td>
+                <asp:Label ID="Quantity01LBL" runat="server" Text="Qty" SkinID="recipeLabel"></asp:Label><br /> 
+                <asp:TextBox ID="Quantity01TXT" runat="server" Width="35px" 
+                    onfocus="if(this.value=='Qty') this.value='';" ToolTip="Quantity"></asp:TextBox>&nbsp;
+            </td>
+            <td>
+                <asp:Label ID="Amount01LBL" runat="server" Text="Amount" SkinID="recipeLabel"></asp:Label><br /> 
+                <asp:DropDownList ID="Amount01DDL" runat="server" DataSourceID="UnitsSDS" 
+                    DataTextField="unit_name" DataValueField="unit_name" 
+                    ToolTip="Amount"></asp:DropDownList>&nbsp;
+            </td>
+            <td>
+                <asp:Label ID="Ingredient01LBL" runat="server" Text="Ingredient" SkinID="recipeLabel"></asp:Label><br /> 
+                <asp:TextBox ID="Ingredient01TXT" runat="server" Width="160px" 
+                    onfocus="if(this.value=='Ingredient') this.value='';" ToolTip="Ingredient"></asp:TextBox>&nbsp;&nbsp;
+                    <!-- <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/Images/barcode_icon_2.jpg" ToolTip="Scan Item" />&nbsp; -->
+            </td>
+        </tr>
+        <!-- ROW 2 -->
+        <tr>
+            <td>
+                <asp:TextBox ID="Quantity02TXT" runat="server" Width="35px" 
+                    onfocus="if(this.value=='Qty') this.value='';" ToolTip="Quantity"></asp:TextBox>&nbsp;
+                
+            </td>
+            <td>
+                <asp:DropDownList ID="Amount02DDL" runat="server" DataSourceID="UnitsSDS" 
+                    DataTextField="unit_name" DataValueField="unit_name" 
+                    ToolTip="Amount"></asp:DropDownList>&nbsp;
+            </td>
+            <td>
+                <asp:TextBox ID="Ingredient02TXT" runat="server" Width="160px" 
+                    onfocus="if(this.value=='Ingredient') this.value='';" ToolTip="Ingredient"></asp:TextBox>&nbsp;&nbsp;
+            </td>
+        </tr>
+        <!-- ROW 3 -->
+        <tr>
+            <td>
+                <asp:TextBox ID="Quantity03TXT" runat="server" Width="35px" 
+                    onfocus="if(this.value=='Qty') this.value='';" ToolTip="Quantity"></asp:TextBox>&nbsp;
+            </td>
+            <td>
+                <asp:DropDownList ID="Amount03DDL" runat="server" DataSourceID="UnitsSDS" 
+                    DataTextField="unit_name" DataValueField="unit_name" 
+                    ToolTip="Amount"></asp:DropDownList>&nbsp;
+            </td>
+            <td>
+                <asp:TextBox ID="Ingredient03TXT" runat="server" Width="160px" 
+                    onfocus="if(this.value=='Ingredient') this.value='';" ToolTip="Ingredient"></asp:TextBox>&nbsp;&nbsp;
+            </td>
+        </tr>
+        <!-- ROW 4 -->
+        <tr>
+            <td>
+                <asp:TextBox ID="Quantity04TXT" runat="server" Width="35px" 
+                    onfocus="if(this.value=='Qty') this.value='';" ToolTip="Quantity"></asp:TextBox>&nbsp;
+                
+            </td>
+            <td>
+                <asp:DropDownList ID="Amount04DDL" runat="server" DataSourceID="UnitsSDS" 
+                    DataTextField="unit_name" DataValueField="unit_name" 
+                    ToolTip="Amount"></asp:DropDownList>&nbsp;
+            </td>
+            <td>
+                <asp:TextBox ID="Ingredient04TXT" runat="server" Width="160px" 
+                    onfocus="if(this.value=='Ingredient') this.value='';" ToolTip="Ingredient"></asp:TextBox>&nbsp;&nbsp;
+            </td>
+        </tr>
+        <!-- ROW 5 -->
+        <tr>
+            <td>
+                <asp:TextBox ID="Quantity05TXT" runat="server" Width="35px" 
+                    onfocus="if(this.value=='Qty') this.value='';" ToolTip="Quantity"></asp:TextBox>&nbsp;
+            </td>
+            <td>
+                <asp:DropDownList ID="Amount05DDL" runat="server" DataSourceID="UnitsSDS" 
+                    DataTextField="unit_name" DataValueField="unit_name" 
+                    ToolTip="Amount"></asp:DropDownList>&nbsp;
+            </td>
+            <td class="style1">
+                <asp:TextBox ID="Ingredient05TXT" runat="server" Width="160px" 
+                    onfocus="if(this.value=='Ingredient') this.value='';" ToolTip="Ingredient"></asp:TextBox>&nbsp;&nbsp;
+            </td>
+        </tr>
+        <!-- ROW 6 -->
+        <tr>
+            <td>
+                <asp:TextBox ID="Quantity06TXT" runat="server" Width="35px" 
+                    onfocus="if(this.value=='Qty') this.value='';" ToolTip="Quantity"></asp:TextBox>&nbsp;
+                
+            </td>
+            <td>
+                <asp:DropDownList ID="Amount06DDL" runat="server" DataSourceID="UnitsSDS" 
+                    DataTextField="unit_name" DataValueField="unit_name" 
+                    ToolTip="Amount"></asp:DropDownList>&nbsp;
+            </td>
+            <td>
+                <asp:TextBox ID="Ingredient06TXT" runat="server" Width="160px" 
+                    onfocus="if(this.value=='Ingredient') this.value='';" ToolTip="Ingredient"></asp:TextBox>&nbsp;&nbsp;
+            </td>
+        </tr>
+        </table>
+
         <!-- ADD, RESET, CANCEL BUTTONS -->
     <asp:Button ID="AddIngredientsBTN" SkinID="BlackButton" runat="server" Text="Add" 
         onclick="AddIngredientsBTN_CLICK" />

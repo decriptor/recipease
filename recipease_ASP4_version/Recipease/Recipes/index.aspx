@@ -19,7 +19,7 @@
             </SelectParameters>
         </asp:SqlDataSource>
 
-        <!-- grid view -->
+        <!-- grid view for summary view of current recipes-->
         <div>
         <asp:Label ID="Label1" runat="server" Text=" " >Current recipes for <% =User.Identity.Name.ToString() %>: </asp:Label><br /><br />
         <asp:GridView ID="GridView1" runat="server" AllowSorting="True" 
@@ -52,6 +52,7 @@
         </div>
     </div>
     <div id="rightcolumn, smallpad">
+
         <!-- data source for details view -->
         <asp:SqlDataSource ID="RecipeaseDetailsViewSDS" runat="server" 
             ConflictDetection="CompareAllValues"
@@ -85,11 +86,11 @@
             </UpdateParameters>
         </asp:SqlDataSource>
 
-        <!-- details view for updating/deleting -->
+        <!-- details view for updating/deleting selected recipe -->
         <div>
         <br />
         <br /><br />Details for selected recipe:<br /><br />
-        <asp:Label ID="ErrorLBL" runat="server" EnableViewState="false"></asp:Label>
+        <asp:Label ID="ErrorLBL" runat="server" EnableViewState="false" SkinID="errorLabel"></asp:Label>
         <asp:DetailsView ID="DetailsView1" runat="server" Height="50px" Width="300px" 
             BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" 
             CellPadding="3" ForeColor="Black" DataSourceID="RecipeaseDetailsViewSDS" 
@@ -97,7 +98,7 @@
                 onitemdeleting="DetailsView1_ItemDeleting" 
                 onitemdeleted="DetailsView1_ItemDeleted" 
                 onitemupdated="DetailsView1_ItemUpdated"
-                onitemupdating="DetailsView1_ItemUpdating">
+                onitemupdating="DetailsView1_ItemUpdating" >
             <AlternatingRowStyle BackColor="#CCCCCC" />
             <EditRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
             <EmptyDataTemplate>
@@ -160,7 +161,7 @@
                         <asp:Label ID="Label5" runat="server" Text='<%# Bind("rec_cook_temp") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="Ready Time" SortExpression="rec_ready_time">
+                <asp:TemplateField HeaderText="Total Time" SortExpression="rec_ready_time">
                     <EditItemTemplate>
                         <asp:TextBox ID="TextBox6" runat="server" Text='<%# Bind("rec_ready_time") %>'></asp:TextBox>
                     </EditItemTemplate>
@@ -210,7 +211,7 @@
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Directions" SortExpression="rec_directions">
                     <EditItemTemplate>
-                        <asp:TextBox ID="TextBox10" runat="server" Text='<%# Bind("rec_directions") %>' Rows="6"></asp:TextBox>
+                        <asp:TextBox ID="TextBox10" runat="server" Text='<%# Bind("rec_directions") %>' Rows="6" TextMode="MultiLine"></asp:TextBox>
                     </EditItemTemplate>
                     <InsertItemTemplate>
                         <asp:TextBox ID="TextBox10" runat="server" Text='<%# Bind("rec_directions") %>'></asp:TextBox>
@@ -251,8 +252,11 @@
                     <ItemTemplate>
                         <asp:LinkButton ID="LinkButton3" runat="server" CausesValidation="False" 
                             CommandName="Edit" Text="Edit Recipe "></asp:LinkButton>
-                        &nbsp;<asp:LinkButton ID="LinkButton4" runat="server" CausesValidation="False" 
-                            CommandName="Delete" Text="Delete Recipe "></asp:LinkButton>
+                        &nbsp;&nbsp;<asp:LinkButton ID="LinkButton4" runat="server" CausesValidation="False" 
+                            CommandName="Delete" Text="Delete Recipe " OnClientClick="return confirm('Are you sure you 
+                                want to delete this record?');"></asp:LinkButton>
+                        &nbsp;&nbsp;<asp:HyperLink ID="ViewRecipeLINK" runat="server" 
+                            NavigateUrl='<%# "~/Recipes/viewRecipe.aspx?rec_id=" + Eval("rec_id") + "&rec_name=" + Eval("rec_name") %>'>View Recipe</asp:HyperLink>
                     </ItemTemplate>
                 </asp:TemplateField>
             </Fields>

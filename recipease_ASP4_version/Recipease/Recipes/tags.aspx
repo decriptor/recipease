@@ -9,6 +9,7 @@
     <p>
         <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Recipes/index.aspx">Return to recipes</asp:HyperLink><br /><br />
     </p>  
+
     <!-- data source for GridView -->
     <asp:SqlDataSource ID="RecipeTagSDS" runat="server" 
         ConnectionString="<%$ ConnectionStrings:INFO3420_12ConnectionString %>" 
@@ -51,7 +52,7 @@
         CellPadding="4" DataSourceID="RecipeTagSDS" ForeColor="Black" 
         GridLines="Vertical" AutoGenerateColumns="False" AllowSorting="True" 
         DataKeyNames="rec_id, tag_id" 
-        onrowdeleted="GridView1_RowDeleted" >
+        onrowdeleted="GridView1_RowDeleted" onrowupdated="GridView1_RowUpdated" >
         <EmptyDataTemplate>
             No tags currently exist for this recipe.  To add tags, edit the list on the right.<br /><br />
         </EmptyDataTemplate>
@@ -82,11 +83,13 @@
     </asp:GridView>
     <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 </div>
+
 <div id="rightcolumn, smallpad">
     <p>
     <br /><br /><br />Add new tags to recipe: <%=Request.QueryString["rec_name"] %>
     </p>
-    <!-- TAGS FOR INSERT-->
+
+    <!-- TAGS FOR INSERTING-->
         <asp:Label ID="TagsLBL" runat="server" Text="Tags">Tags</asp:Label>
         <asp:SqlDataSource ID="TagsSDS" runat="server" 
             ConnectionString="<%$ ConnectionStrings:INFO3420_12ConnectionString %>" 
@@ -103,6 +106,7 @@
         DataSourceID="TagsSDS" DataTextField="tag_name" DataValueField="tag_name" 
         SelectionMode="Multiple">
         </asp:ListBox><br /><br />
+
      <!-- ADD, RESET, CANCEL BUTTONS -->
         <asp:Button ID="AddTagsBTN" SkinID="BlackButton" runat="server" Text="Add" 
             onclick="AddTagsBTN_Click" />

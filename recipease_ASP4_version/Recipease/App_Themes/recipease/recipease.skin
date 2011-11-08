@@ -25,6 +25,23 @@ Default skin template. The following skins are provided as examples only.
     Width="120px" 
     Height="50px"  />
 
+<asp:Label
+    SkinId="recipeLabel"
+    runat="server"
+    Font-Names="Palatino Linotype"
+    Font-Size="Smaller" />
+
+<asp:Label
+    SkinId="recipeLabelHeader"
+    runat="server"
+    Font-Names="Palatino Linotype"
+    Font-Bold="True" />
+
+<asp:Label
+    SkinId="errorLabel"
+    runat="server"
+    ForeColor="Red" />
+
 <asp:TextBox
     runat="server"
     BackColor="#D9E1E3"

@@ -13,7 +13,8 @@ public partial class Recipes_ingredients : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        Page.Form.DefaultFocus = Quantity01TXT.ClientID; // default textbox focus on page load
+        this.Form.DefaultButton = this.AddIngredientsBTN.UniqueID; // default button when enter is pressed
     }
 
     public static string GetNumberDisplay(object value) // removes any trailing zeros
@@ -30,12 +31,12 @@ public partial class Recipes_ingredients : System.Web.UI.Page
         {
             // add more ingredients to the selected recipe
             /*** INSERT QUERIES START ***/
-            if (Ingredient01TXT.Text != "Ingredient"
-                    || Ingredient02TXT.Text != "Ingredient"
-                    || Ingredient03TXT.Text != "Ingredient"
-                    || Ingredient04TXT.Text != "Ingredient"
-                    || Ingredient05TXT.Text != "Ingredient"
-                    || Ingredient06TXT.Text != "Ingredient")
+            if (Ingredient01TXT.Text != ""
+                    || Ingredient02TXT.Text != ""
+                    || Ingredient03TXT.Text != ""
+                    || Ingredient04TXT.Text != ""
+                    || Ingredient05TXT.Text != ""
+                    || Ingredient06TXT.Text != "")
             {
                 // 1.  open the Connection object for the context
                 SqlConnection myConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["INFO3420_12ConnectionString"].ConnectionString);
@@ -50,7 +51,7 @@ public partial class Recipes_ingredients : System.Web.UI.Page
                 SqlCommand insert06 = new SqlCommand("insert_MORE_RECIPES", myConnection);
 
                 //3. set up sprocs with proper values and execute!
-                if (Ingredient01TXT.Text != "Ingredient" && Ingredient01TXT.Text != "")
+                if (Ingredient01TXT.Text != "")
                 {
                     insert01.CommandType = CommandType.StoredProcedure;
                     insert01.Parameters.Add("@rec_id", SqlDbType.Int).Value = Request.QueryString["rec_id"];
@@ -61,7 +62,7 @@ public partial class Recipes_ingredients : System.Web.UI.Page
                     insert01.ExecuteNonQuery(); //execute the sproc
                 }
 
-                if (Ingredient02TXT.Text != "Ingredient" && Ingredient02TXT.Text != "")
+                if (Ingredient02TXT.Text != "")
                 {
                     insert02.CommandType = CommandType.StoredProcedure;
                     insert02.Parameters.Add("@rec_id", SqlDbType.Int).Value = Request.QueryString["rec_id"];
@@ -72,7 +73,7 @@ public partial class Recipes_ingredients : System.Web.UI.Page
                     insert02.ExecuteNonQuery(); //execute the sproc
                 }
 
-                if (Ingredient03TXT.Text != "Ingredient" && Ingredient03TXT.Text != "")
+                if (Ingredient03TXT.Text != "")
                 {
                     insert03.CommandType = CommandType.StoredProcedure;
                     insert03.Parameters.Add("@rec_id", SqlDbType.Int).Value = Request.QueryString["rec_id"];
@@ -83,7 +84,7 @@ public partial class Recipes_ingredients : System.Web.UI.Page
                     insert03.ExecuteNonQuery(); //execute the sproc
                 }
 
-                if (Ingredient04TXT.Text != "Ingredient" && Ingredient04TXT.Text != "")
+                if (Ingredient04TXT.Text != "")
                 {
                     insert04.CommandType = CommandType.StoredProcedure;
                     insert04.Parameters.Add("@rec_id", SqlDbType.Int).Value = Request.QueryString["rec_id"];
@@ -94,7 +95,7 @@ public partial class Recipes_ingredients : System.Web.UI.Page
                     insert04.ExecuteNonQuery(); //execute the sproc
                 }
 
-                if (Ingredient05TXT.Text != "Ingredient" && Ingredient05TXT.Text != "")
+                if (Ingredient05TXT.Text != "")
                 {
                     insert05.CommandType = CommandType.StoredProcedure;
                     insert05.Parameters.Add("@rec_id", SqlDbType.Int).Value = Request.QueryString["rec_id"];
@@ -105,7 +106,7 @@ public partial class Recipes_ingredients : System.Web.UI.Page
                     insert05.ExecuteNonQuery(); //execute the sproc
                 }
 
-                if (Ingredient06TXT.Text != "Ingredient" && Ingredient06TXT.Text != "")
+                if (Ingredient06TXT.Text != "")
                 {
                     insert06.CommandType = CommandType.StoredProcedure;
                     insert06.Parameters.Add("@rec_id", SqlDbType.Int).Value = Request.QueryString["rec_id"];
@@ -132,19 +133,19 @@ public partial class Recipes_ingredients : System.Web.UI.Page
     protected void ResetIngredientsBTN_CLICK(object sender, EventArgs e)
     {
         // reset stuff to default values
-        Ingredient01TXT.Text = "Ingredient";
-        Ingredient01TXT.Text = "Ingredient";
-        Ingredient02TXT.Text = "Ingredient";
-        Ingredient03TXT.Text = "Ingredient";
-        Ingredient04TXT.Text = "Ingredient";
-        Ingredient05TXT.Text = "Ingredient";
-        Ingredient06TXT.Text = "Ingredient";
-        Quantity01TXT.Text = "Qty";
-        Quantity02TXT.Text = "Qty";
-        Quantity03TXT.Text = "Qty";
-        Quantity04TXT.Text = "Qty";
-        Quantity05TXT.Text = "Qty";
-        Quantity06TXT.Text = "Qty";
+        Ingredient01TXT.Text = "";
+        Ingredient01TXT.Text = "";
+        Ingredient02TXT.Text = "";
+        Ingredient03TXT.Text = "";
+        Ingredient04TXT.Text = "";
+        Ingredient05TXT.Text = "";
+        Ingredient06TXT.Text = "";
+        Quantity01TXT.Text = "";
+        Quantity02TXT.Text = "";
+        Quantity03TXT.Text = "";
+        Quantity04TXT.Text = "";
+        Quantity05TXT.Text = "";
+        Quantity06TXT.Text = "";
         Amount01DDL.SelectedIndex = 0; // drop downs for unit amounts will display the default text
         Amount02DDL.SelectedIndex = 0;
         Amount03DDL.SelectedIndex = 0;

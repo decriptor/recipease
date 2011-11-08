@@ -81,7 +81,7 @@ public partial class Recipes_index : System.Web.UI.Page
         else
         {
             GridView1.DataBind();
-            ErrorLBL.Text = "Recipe successfully deleted.";
+            ErrorLBL.Text = "Recipe was successfully deleted.";
         }
     }
 

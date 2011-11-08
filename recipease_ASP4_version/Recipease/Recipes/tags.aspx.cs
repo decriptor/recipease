@@ -13,7 +13,7 @@ public partial class Recipes_tags : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-      
+        this.Form.DefaultButton = this.AddTagsBTN.UniqueID; // default button when enter is pressed
     }
 
     protected void AddTagsBTN_Click(object sender, EventArgs e) // adds recipe data to various tables in db
@@ -47,7 +47,12 @@ public partial class Recipes_tags : System.Web.UI.Page
     }
     protected void GridView1_RowDeleted(object sender, GridViewDeletedEventArgs e)
     {
-        // page refresh to updated data sources
+        // page refresh to update data sources
+        Response.Redirect("~/Recipes/tags.aspx?rec_id=" + Request.QueryString["rec_id"] + "&rec_name=" + Request.QueryString["rec_name"]);
+    }
+    protected void GridView1_RowUpdated(object sender, GridViewUpdatedEventArgs e)
+    {
+        // page refresh to update data sources
         Response.Redirect("~/Recipes/tags.aspx?rec_id=" + Request.QueryString["rec_id"] + "&rec_name=" + Request.QueryString["rec_name"]);
     }
 }
