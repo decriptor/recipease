@@ -5,12 +5,11 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
 <div id="leftcolumn">
-    <h1>Ingredients for Recipe: <%=Request.QueryString["rec_name"] %> </h1>
-    <p>
-        <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Recipes/index.aspx">Return to recipes</asp:HyperLink><br /><br />
-    </p>  
+    <h1>Ingredients for Recipe: <%=Request.QueryString["rec_name"] %> </h1>  
     <p>
         <asp:Label ID="ErrorsLBL" CssClass="emphasis" runat="server" SkinID="errorLabel" Text=""></asp:Label>
+        <asp:ValidationSummary ID="ValidationSummary" runat="server" HeaderText="Please correct the following errors: " />
+        <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Recipes/index.aspx">Return to recipes</asp:HyperLink><br /><br />
     </p>
 
     <!-- data source for GridView -->
@@ -53,7 +52,7 @@
         BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" 
         CellPadding="4" DataSourceID="IngredientSDS" ForeColor="Black" 
         GridLines="Vertical" AutoGenerateColumns="False" AllowSorting="True" 
-        DataKeyNames="rec_id,ing_name" >
+        DataKeyNames="rec_id,ing_name" onrowupdated="GridView1_ItemUpdated" >
         <EmptyDataTemplate>
             No ingredients currently exist for this recipe.  Add them using the form on the right.<br /><br />
         </EmptyDataTemplate>
@@ -75,6 +74,9 @@
 
             <asp:TemplateField HeaderText="Qty" SortExpression="rec_ing_quantity" HeaderStyle-Width="5px">
                 <EditItemTemplate>
+                    <asp:RangeValidator ID="RangeValidator" runat="server" Display="Dynamic"
+                        ErrorMessage="Quantity must be a number" ControlToValidate="Textbox1" Type="Double" 
+                        MinimumValue="0" MaximumValue="32000">*</asp:RangeValidator>
                     <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("rec_ing_quantity") %>' Width="35px"></asp:TextBox>
                 </EditItemTemplate>
                 <ItemTemplate>
@@ -97,9 +99,9 @@
                 <ItemStyle Width="50px"></ItemStyle>
             </asp:TemplateField>
             
-            <asp:TemplateField HeaderText="Name" SortExpression="ing_name" HeaderStyle-Width="5px">
+            <asp:TemplateField HeaderText="Ingredient" SortExpression="ing_name" HeaderStyle-Width="5px">
                 <EditItemTemplate>
-                    <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("ing_name") %>' Width="110px"></asp:TextBox>
+                    <asp:TextBox ID="TextBox2" runat="server" MaxLength="50" Text='<%# Bind("ing_name") %>' Width="110px"></asp:TextBox>
                 </EditItemTemplate>
                 <ItemTemplate>
                     <asp:Label ID="Label3" runat="server" Text='<%# Bind("ing_name") %>' Width="110px"></asp:Label>
@@ -129,7 +131,7 @@
     <!-- SQL data source for the AMOUNT drop down lists -->
     <asp:SqlDataSource ID="UnitsSDS" runat="server" 
         ConnectionString="<%$ ConnectionStrings:INFO3420_12ConnectionString %>" 
-        SelectCommand="SELECT * FROM [RECIPEASE_UNIT]">
+        SelectCommand="SELECT * FROM [RECIPEASE_UNIT] ORDER BY unit_name">
     </asp:SqlDataSource>
 
     <!-- QUANTITY, AMOUNT, and INGREDIENT controls -->
@@ -137,6 +139,12 @@
         <!-- ROW 1 -->
         <tr>
             <td>
+                <asp:RangeValidator ID="RangeValidator1" runat="server" Display="Dynamic"
+                        ErrorMessage="Quantity must be a number" ControlToValidate="Quantity01TXT" 
+                        MinimumValue="0" MaximumValue="32000" Type="Double">*</asp:RangeValidator>
+                <asp:CustomValidator ID="CustomValidator1" runat="server" 
+                    ErrorMessage="You must specify both a quantity and an ingredient" ControlToValidate="Quantity01TXT" 
+                    onservervalidate="Ingredient01CV_ServerValidate" Display="Dynamic">*</asp:CustomValidator>
                 <asp:Label ID="Quantity01LBL" runat="server" Text="Qty" SkinID="recipeLabel"></asp:Label><br /> 
                 <asp:TextBox ID="Quantity01TXT" runat="server" Width="35px" 
                     onfocus="if(this.value=='Qty') this.value='';" ToolTip="Quantity"></asp:TextBox>&nbsp;
@@ -148,8 +156,14 @@
                     ToolTip="Amount"></asp:DropDownList>&nbsp;
             </td>
             <td>
+                <asp:CustomValidator ID="Ingredient01CV" runat="server" 
+                    ErrorMessage="You must specify both a quantity and an ingredient" ControlToValidate="Ingredient01TXT" 
+                    onservervalidate="Ingredient01CV_ServerValidate" Display="Dynamic">*</asp:CustomValidator>
+                <asp:CustomValidator ID="CustomValidator7" runat="server" 
+                    ErrorMessage="Two ingredients cannot have the same name" ControlToValidate="Ingredient01TXT" 
+                    onservervalidate="IngredientNameCV_ServerValidate" Display="Dynamic">*</asp:CustomValidator>
                 <asp:Label ID="Ingredient01LBL" runat="server" Text="Ingredient" SkinID="recipeLabel"></asp:Label><br /> 
-                <asp:TextBox ID="Ingredient01TXT" runat="server" Width="160px" 
+                <asp:TextBox ID="Ingredient01TXT" MaxLength="50" runat="server" Width="160px" 
                     onfocus="if(this.value=='Ingredient') this.value='';" ToolTip="Ingredient"></asp:TextBox>&nbsp;&nbsp;
                     <!-- <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/Images/barcode_icon_2.jpg" ToolTip="Scan Item" />&nbsp; -->
             </td>
@@ -157,6 +171,12 @@
         <!-- ROW 2 -->
         <tr>
             <td>
+                <asp:RangeValidator ID="RangeValidator2" runat="server" Display="Dynamic"
+                        ErrorMessage="Quantity must be a number" ControlToValidate="Quantity02TXT" 
+                        MinimumValue="0" MaximumValue="32000" Type="Double">*</asp:RangeValidator>
+                <asp:CustomValidator ID="CustomValidator2" runat="server" 
+                    ErrorMessage="You must specify both a quantity and an ingredient" ControlToValidate="Quantity02TXT" 
+                    onservervalidate="Ingredient02CV_ServerValidate" Display="Dynamic">*</asp:CustomValidator>
                 <asp:TextBox ID="Quantity02TXT" runat="server" Width="35px" 
                     onfocus="if(this.value=='Qty') this.value='';" ToolTip="Quantity"></asp:TextBox>&nbsp;
                 
@@ -167,13 +187,25 @@
                     ToolTip="Amount"></asp:DropDownList>&nbsp;
             </td>
             <td>
-                <asp:TextBox ID="Ingredient02TXT" runat="server" Width="160px" 
+                <asp:CustomValidator ID="Ingredient02CV" runat="server" 
+                    ErrorMessage="You must specify both a quantity and an ingredient" ControlToValidate="Ingredient02TXT" 
+                    onservervalidate="Ingredient02CV_ServerValidate" Display="Dynamic">*</asp:CustomValidator>
+                <asp:CustomValidator ID="CustomValidator8" runat="server" 
+                    ErrorMessage="Two ingredients cannot have the same name" ControlToValidate="Ingredient02TXT" 
+                    onservervalidate="IngredientNameCV_ServerValidate" Display="Dynamic">*</asp:CustomValidator>
+                <asp:TextBox ID="Ingredient02TXT" MaxLength="50" runat="server" Width="160px" 
                     onfocus="if(this.value=='Ingredient') this.value='';" ToolTip="Ingredient"></asp:TextBox>&nbsp;&nbsp;
             </td>
         </tr>
         <!-- ROW 3 -->
         <tr>
             <td>
+                <asp:RangeValidator ID="RangeValidator3" runat="server" Display="Dynamic"
+                        ErrorMessage="Quantity must be a number" ControlToValidate="Quantity03TXT" 
+                        MinimumValue="0" MaximumValue="32000" Type="Double">*</asp:RangeValidator>
+                <asp:CustomValidator ID="CustomValidator3" runat="server" 
+                    ErrorMessage="You must specify both a quantity and an ingredient" ControlToValidate="Quantity03TXT" 
+                    onservervalidate="Ingredient03CV_ServerValidate" Display="Dynamic">*</asp:CustomValidator>
                 <asp:TextBox ID="Quantity03TXT" runat="server" Width="35px" 
                     onfocus="if(this.value=='Qty') this.value='';" ToolTip="Quantity"></asp:TextBox>&nbsp;
             </td>
@@ -183,13 +215,25 @@
                     ToolTip="Amount"></asp:DropDownList>&nbsp;
             </td>
             <td>
-                <asp:TextBox ID="Ingredient03TXT" runat="server" Width="160px" 
+                <asp:CustomValidator ID="Ingredient03CV" runat="server" 
+                    ErrorMessage="You must specify both a quantity and an ingredient" ControlToValidate="Ingredient03TXT" 
+                    onservervalidate="Ingredient03CV_ServerValidate" Display="Dynamic">*</asp:CustomValidator>
+                <asp:CustomValidator ID="CustomValidator9" runat="server" 
+                    ErrorMessage="Two ingredients cannot have the same name" ControlToValidate="Ingredient03TXT" 
+                    onservervalidate="IngredientNameCV_ServerValidate" Display="Dynamic">*</asp:CustomValidator>
+                <asp:TextBox ID="Ingredient03TXT" MaxLength="50" runat="server" Width="160px" 
                     onfocus="if(this.value=='Ingredient') this.value='';" ToolTip="Ingredient"></asp:TextBox>&nbsp;&nbsp;
             </td>
         </tr>
         <!-- ROW 4 -->
         <tr>
             <td>
+                <asp:RangeValidator ID="RangeValidator4" runat="server" Display="Dynamic"
+                        ErrorMessage="Quantity must be a number" ControlToValidate="Quantity04TXT" 
+                        MinimumValue="0" MaximumValue="32000" Type="Double">*</asp:RangeValidator>
+                <asp:CustomValidator ID="CustomValidator4" runat="server" 
+                    ErrorMessage="You must specify both a quantity and an ingredient" ControlToValidate="Quantity04TXT" 
+                    onservervalidate="Ingredient04CV_ServerValidate" Display="Dynamic">*</asp:CustomValidator>
                 <asp:TextBox ID="Quantity04TXT" runat="server" Width="35px" 
                     onfocus="if(this.value=='Qty') this.value='';" ToolTip="Quantity"></asp:TextBox>&nbsp;
                 
@@ -200,13 +244,25 @@
                     ToolTip="Amount"></asp:DropDownList>&nbsp;
             </td>
             <td>
-                <asp:TextBox ID="Ingredient04TXT" runat="server" Width="160px" 
+                <asp:CustomValidator ID="Ingredient04CV" runat="server" 
+                    ErrorMessage="You must specify both a quantity and an ingredient" ControlToValidate="Ingredient04TXT" 
+                    onservervalidate="Ingredient04CV_ServerValidate" Display="Dynamic">*</asp:CustomValidator>
+                <asp:CustomValidator ID="CustomValidator10" runat="server" 
+                    ErrorMessage="Two ingredients cannot have the same name" ControlToValidate="Ingredient04TXT" 
+                    onservervalidate="IngredientNameCV_ServerValidate" Display="Dynamic">*</asp:CustomValidator>
+                <asp:TextBox ID="Ingredient04TXT" MaxLength="50" runat="server" Width="160px" 
                     onfocus="if(this.value=='Ingredient') this.value='';" ToolTip="Ingredient"></asp:TextBox>&nbsp;&nbsp;
             </td>
         </tr>
         <!-- ROW 5 -->
         <tr>
             <td>
+                <asp:RangeValidator ID="RangeValidator5" runat="server" Display="Dynamic"
+                        ErrorMessage="Quantity must be a number" ControlToValidate="Quantity05TXT" 
+                        MinimumValue="0" MaximumValue="32000" Type="Double">*</asp:RangeValidator>
+                <asp:CustomValidator ID="CustomValidator5" runat="server" 
+                    ErrorMessage="You must specify both a quantity and an ingredient" ControlToValidate="Quantity05TXT" 
+                    onservervalidate="Ingredient05CV_ServerValidate" Display="Dynamic">*</asp:CustomValidator>
                 <asp:TextBox ID="Quantity05TXT" runat="server" Width="35px" 
                     onfocus="if(this.value=='Qty') this.value='';" ToolTip="Quantity"></asp:TextBox>&nbsp;
             </td>
@@ -216,13 +272,25 @@
                     ToolTip="Amount"></asp:DropDownList>&nbsp;
             </td>
             <td class="style1">
-                <asp:TextBox ID="Ingredient05TXT" runat="server" Width="160px" 
+                <asp:CustomValidator ID="Ingredient05CV" runat="server" 
+                    ErrorMessage="You must specify both a quantity and an ingredient" ControlToValidate="Ingredient05TXT" 
+                    onservervalidate="Ingredient05CV_ServerValidate" Display="Dynamic">*</asp:CustomValidator>
+                <asp:CustomValidator ID="CustomValidator11" runat="server" 
+                    ErrorMessage="Two ingredients cannot have the same name" ControlToValidate="Ingredient05TXT" 
+                    onservervalidate="IngredientNameCV_ServerValidate" Display="Dynamic">*</asp:CustomValidator>
+                <asp:TextBox ID="Ingredient05TXT" MaxLength="50" runat="server" Width="160px" 
                     onfocus="if(this.value=='Ingredient') this.value='';" ToolTip="Ingredient"></asp:TextBox>&nbsp;&nbsp;
             </td>
         </tr>
         <!-- ROW 6 -->
         <tr>
             <td>
+                <asp:RangeValidator ID="RangeValidator6" runat="server" Display="Dynamic"
+                        ErrorMessage="Quantity must be a number" ControlToValidate="Quantity06TXT" 
+                        MinimumValue="0" MaximumValue="32000" Type="Double">*</asp:RangeValidator>
+                <asp:CustomValidator ID="CustomValidator6" runat="server" 
+                    ErrorMessage="You must specify both a quantity and an ingredient" ControlToValidate="Quantity06TXT" 
+                    onservervalidate="Ingredient06CV_ServerValidate" Display="Dynamic">*</asp:CustomValidator>
                 <asp:TextBox ID="Quantity06TXT" runat="server" Width="35px" 
                     onfocus="if(this.value=='Qty') this.value='';" ToolTip="Quantity"></asp:TextBox>&nbsp;
                 
@@ -233,7 +301,13 @@
                     ToolTip="Amount"></asp:DropDownList>&nbsp;
             </td>
             <td>
-                <asp:TextBox ID="Ingredient06TXT" runat="server" Width="160px" 
+                <asp:CustomValidator ID="Ingredient06CV" runat="server" 
+                    ErrorMessage="You must specify both a quantity and an ingredient" ControlToValidate="Ingredient05TXT" 
+                    onservervalidate="Ingredient06CV_ServerValidate" Display="Dynamic">*</asp:CustomValidator>
+                <asp:CustomValidator ID="CustomValidator12" runat="server" 
+                    ErrorMessage="Two ingredients cannot have the same name" ControlToValidate="Ingredient06TXT" 
+                    onservervalidate="IngredientNameCV_ServerValidate" Display="Dynamic">*</asp:CustomValidator>
+                <asp:TextBox ID="Ingredient06TXT" MaxLength="50" runat="server" Width="160px" 
                     onfocus="if(this.value=='Ingredient') this.value='';" ToolTip="Ingredient"></asp:TextBox>&nbsp;&nbsp;
             </td>
         </tr>
@@ -243,7 +317,7 @@
     <asp:Button ID="AddIngredientsBTN" SkinID="BlackButton" runat="server" Text="Add" 
         onclick="AddIngredientsBTN_CLICK" />
     <asp:Button ID="ResetIngredientsBTN" SkinID="BlackButton" runat="server" 
-        OnClick="ResetIngredientsBTN_CLICK" Text="Reset"  />
+        OnClick="ResetIngredientsBTN_CLICK" Text="Reset"  CausesValidation="False" />
 </div>
 </asp:Content>
 

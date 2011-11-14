@@ -108,10 +108,10 @@
             <Fields>
                 <asp:TemplateField HeaderText="Name" SortExpression="rec_name">
                     <EditItemTemplate>
-                        <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("rec_name") %>'></asp:TextBox>
+                        <asp:TextBox ID="TextBox1" MaxLength="50" runat="server" Text='<%# Bind("rec_name") %>'></asp:TextBox>
                     </EditItemTemplate>
                     <InsertItemTemplate>
-                        <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("rec_name") %>'></asp:TextBox>
+                        <asp:TextBox ID="TextBox1" MaxLength="50" runat="server" Text='<%# Bind("rec_name") %>'></asp:TextBox>
                     </InsertItemTemplate>
                     <ItemTemplate>
                         <asp:Label ID="Label1" runat="server" Text='<%# Bind("rec_name") %>'></asp:Label>
@@ -119,10 +119,10 @@
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Description" SortExpression="rec_desc">
                     <EditItemTemplate>
-                        <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("rec_desc") %>'></asp:TextBox>
+                        <asp:TextBox ID="TextBox2" MaxLength="256" runat="server" Text='<%# Bind("rec_desc") %>'></asp:TextBox>
                     </EditItemTemplate>
                     <InsertItemTemplate>
-                        <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("rec_desc") %>'></asp:TextBox>
+                        <asp:TextBox ID="TextBox2" MaxLength="256" runat="server" Text='<%# Bind("rec_desc") %>'></asp:TextBox>
                     </InsertItemTemplate>
                     <ItemTemplate>
                         <asp:Label ID="Label2" runat="server" Text='<%# Bind("rec_desc") %>'></asp:Label>
@@ -130,10 +130,10 @@
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Prep Time" SortExpression="rec_prep_time">
                     <EditItemTemplate>
-                        <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("rec_prep_time") %>'></asp:TextBox>
+                        <asp:TextBox ID="TextBox3" MaxLength="20" runat="server" Text='<%# Bind("rec_prep_time") %>'></asp:TextBox>
                     </EditItemTemplate>
                     <InsertItemTemplate>
-                        <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("rec_prep_time") %>'></asp:TextBox>
+                        <asp:TextBox ID="TextBox3" MaxLength="20" runat="server" Text='<%# Bind("rec_prep_time") %>'></asp:TextBox>
                     </InsertItemTemplate>
                     <ItemTemplate>
                         <asp:Label ID="Label3" runat="server" Text='<%# Bind("rec_prep_time") %>'></asp:Label>
@@ -141,10 +141,10 @@
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Cook Time" SortExpression="rec_cook_time">
                     <EditItemTemplate>
-                        <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("rec_cook_time") %>'></asp:TextBox>
+                        <asp:TextBox ID="TextBox4" MaxLength="20" runat="server" Text='<%# Bind("rec_cook_time") %>'></asp:TextBox>
                     </EditItemTemplate>
                     <InsertItemTemplate>
-                        <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("rec_cook_time") %>'></asp:TextBox>
+                        <asp:TextBox ID="TextBox4" MaxLength="20" runat="server" Text='<%# Bind("rec_cook_time") %>'></asp:TextBox>
                     </InsertItemTemplate>
                     <ItemTemplate>
                         <asp:Label ID="Label4" runat="server" Text='<%# Bind("rec_cook_time") %>'></asp:Label>
@@ -152,10 +152,10 @@
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Cook Temp" SortExpression="rec_cook_temp">
                     <EditItemTemplate>
-                        <asp:TextBox ID="TextBox5" runat="server" Text='<%# Bind("rec_cook_temp") %>'></asp:TextBox>
+                        <asp:TextBox ID="TextBox5" MaxLength="20" runat="server" Text='<%# Bind("rec_cook_temp") %>'></asp:TextBox>
                     </EditItemTemplate>
                     <InsertItemTemplate>
-                        <asp:TextBox ID="TextBox5" runat="server" Text='<%# Bind("rec_cook_temp") %>'></asp:TextBox>
+                        <asp:TextBox ID="TextBox5" MaxLength="20" runat="server" Text='<%# Bind("rec_cook_temp") %>'></asp:TextBox>
                     </InsertItemTemplate>
                     <ItemTemplate>
                         <asp:Label ID="Label5" runat="server" Text='<%# Bind("rec_cook_temp") %>'></asp:Label>
@@ -163,10 +163,10 @@
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Total Time" SortExpression="rec_ready_time">
                     <EditItemTemplate>
-                        <asp:TextBox ID="TextBox6" runat="server" Text='<%# Bind("rec_ready_time") %>'></asp:TextBox>
+                        <asp:TextBox ID="TextBox6" MaxLength="20" runat="server" Text='<%# Bind("rec_ready_time") %>'></asp:TextBox>
                     </EditItemTemplate>
                     <InsertItemTemplate>
-                        <asp:TextBox ID="TextBox6" runat="server" Text='<%# Bind("rec_ready_time") %>'></asp:TextBox>
+                        <asp:TextBox ID="TextBox6" MaxLength="20" runat="server" Text='<%# Bind("rec_ready_time") %>'></asp:TextBox>
                     </InsertItemTemplate>
                     <ItemTemplate>
                         <asp:Label ID="Label6" runat="server" Text='<%# Bind("rec_ready_time") %>'></asp:Label>
@@ -175,11 +175,11 @@
                 <asp:TemplateField HeaderText="Serving Size" 
                     SortExpression="rec_serving_size">
                     <EditItemTemplate>
-                        <asp:TextBox ID="TextBox7" runat="server" 
+                        <asp:TextBox ID="TextBox7" MaxLength="20" runat="server" 
                             Text='<%# Bind("rec_serving_size") %>'></asp:TextBox>
                     </EditItemTemplate>
                     <InsertItemTemplate>
-                        <asp:TextBox ID="TextBox7" runat="server" 
+                        <asp:TextBox ID="TextBox7" MaxLength="20" runat="server" 
                             Text='<%# Bind("rec_serving_size") %>'></asp:TextBox>
                     </InsertItemTemplate>
                     <ItemTemplate>
@@ -192,7 +192,7 @@
                         <asp:FileUpload ID="FileUpload1" runat="server"/> 
                     </EditItemTemplate>
                     <InsertItemTemplate>
-                        <asp:TextBox ID="TextBox8" runat="server" Text='<%# Bind("rec_image_path") %>'></asp:TextBox>
+                        <asp:TextBox ID="TextBox8" MaxLength="50" runat="server" Text='<%# Bind("rec_image_path") %>'></asp:TextBox>
                     </InsertItemTemplate>
                     <ItemTemplate>
                         <asp:Label ID="Label8" runat="server" Text='<%# Bind("rec_image_path") %>'></asp:Label>
@@ -200,10 +200,13 @@
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Rating (1-5)" SortExpression="rec_rating">
                     <EditItemTemplate>
-                        <asp:TextBox ID="TextBox9" runat="server" Text='<%# Bind("rec_rating") %>'></asp:TextBox>
+                        <asp:RangeValidator ID="RatingRV" runat="server" ErrorMessage="Rating must a number, 1-5" 
+                            ControlToValidate="TextBox9" Display="Dynamic" MinimumValue="1" MaximumValue="5" 
+                            ToolTip="Must be a number, 1-5" Type="Integer"></asp:RangeValidator>
+                        <asp:TextBox ID="TextBox9" MaxLength="1" runat="server" Text='<%# Bind("rec_rating") %>'></asp:TextBox>
                     </EditItemTemplate>
                     <InsertItemTemplate>
-                        <asp:TextBox ID="TextBox9" runat="server" Text='<%# Bind("rec_rating") %>'></asp:TextBox>
+                        <asp:TextBox ID="TextBox9" MaxLength="1" runat="server" Text='<%# Bind("rec_rating") %>'></asp:TextBox>
                     </InsertItemTemplate>
                     <ItemTemplate>
                         <asp:Label ID="Label9" runat="server" Text='<%# Bind("rec_rating") %>'></asp:Label>
@@ -211,10 +214,10 @@
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Directions" SortExpression="rec_directions">
                     <EditItemTemplate>
-                        <asp:TextBox ID="TextBox10" runat="server" Text='<%# Bind("rec_directions") %>' Rows="6" TextMode="MultiLine"></asp:TextBox>
+                        <asp:TextBox ID="TextBox10" MaxLength="2000" runat="server" Text='<%# Bind("rec_directions") %>' Rows="6" TextMode="MultiLine"></asp:TextBox>
                     </EditItemTemplate>
                     <InsertItemTemplate>
-                        <asp:TextBox ID="TextBox10" runat="server" Text='<%# Bind("rec_directions") %>'></asp:TextBox>
+                        <asp:TextBox ID="TextBox10" MaxLength="2000" runat="server" Text='<%# Bind("rec_directions") %>'></asp:TextBox>
                     </InsertItemTemplate>
                     <ItemTemplate>
                         <asp:Label ID="Label10" runat="server" Text='<%# Bind("rec_directions") %>'></asp:Label>

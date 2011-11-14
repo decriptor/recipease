@@ -9,10 +9,12 @@
         <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Recipes/index.aspx">Return to recipes</asp:HyperLink><br /><br />
     </p>  
     <h1><%=Request.QueryString["rec_name"] %></h1>
+
     <!-- recipe data source for FormsView -->
     <asp:SqlDataSource ID="RecipeSDS" runat="server" 
         ConnectionString="<%$ ConnectionStrings:INFO3420_12ConnectionString %>" 
-        SelectCommand="SELECT * FROM [RECIPEASE_RECIPE] WHERE ([rec_id] = @rec_id)">
+        SelectCommand="SELECT * FROM [RECIPEASE_RECIPE] WHERE ([rec_id] = @rec_id)"
+        OldValuesParameterFormatString="original_{0}">
         <SelectParameters>
             <asp:QueryStringParameter Name="rec_id" QueryStringField="rec_id" 
                 Type="Int32" />
@@ -22,7 +24,7 @@
     <!-- ingredient data source for GridView -->
     <asp:SqlDataSource ID="IngredientsSDS" runat="server" 
         ConnectionString="<%$ ConnectionStrings:INFO3420_12ConnectionString %>" 
-        SelectCommand="SELECT RECIPEASE_RECIPE_INGREDIENT.ing_name AS [Ingredient], RECIPEASE_RECIPE_INGREDIENT.rec_ing_quantity AS [Quantity], RECIPEASE_UNIT.unit_name AS [Amount] FROM RECIPEASE_RECIPE_INGREDIENT INNER JOIN RECIPEASE_UNIT ON RECIPEASE_RECIPE_INGREDIENT.unit_id = RECIPEASE_UNIT.unit_id WHERE (RECIPEASE_RECIPE_INGREDIENT.rec_id = @rec_id)">
+        SelectCommand="SELECT RECIPEASE_RECIPE_INGREDIENT.rec_ing_quantity AS [Quantity], RECIPEASE_UNIT.unit_name AS [Amount], RECIPEASE_RECIPE_INGREDIENT.ing_name AS [Ingredient] FROM RECIPEASE_RECIPE_INGREDIENT INNER JOIN RECIPEASE_UNIT ON RECIPEASE_RECIPE_INGREDIENT.unit_id = RECIPEASE_UNIT.unit_id WHERE (RECIPEASE_RECIPE_INGREDIENT.rec_id = @rec_id)">
         <SelectParameters>
             <asp:QueryStringParameter Name="rec_id" QueryStringField="rec_id" 
                 Type="Int32" />
@@ -53,7 +55,7 @@
         <PagerStyle BackColor="#F7F7DE" ForeColor="Black" HorizontalAlign="Right" />
         <RowStyle BackColor="#F7F7DE" />
         <ItemTemplate>
-        <asp:Image ID="Image1" runat="server" ImageUrl='<%# Eval("rec_image_path", "Images/Products/{0}") %>' Width="100px" />
+        <asp:Image ID="imgRecipe" runat="server" ImageUrl='<%# Eval("rec_image_path") %>' />
         <table>
         <tr>
             <td>
@@ -82,7 +84,7 @@
                 <asp:Label ID="serving_sizeHEADER" runat="server" SkinID="recipeLabelHeader" Text="Serves: "></asp:Label><br />
                 <asp:Label ID="serving_sizeLBL" runat="server" Text='<%# Eval("rec_serving_size") %>'></asp:Label>
             </td>
-        </tr><br /><br /><br />
+        </tr>
 
         <h2>Ingredients</h2>
         <!-- GridView for ingredients -->
@@ -113,7 +115,7 @@
                 <asp:Label ID="dateLBL" runat="server" Text='<%# Eval("rec_date") %>'></asp:Label>
             </td>
             <td>
-                <asp:Label ID="ownerHEADER" runat="server" SkinID="recipeLabelHeader" Text="Recipe belongs to:"></asp:Label><br />
+                <asp:Label ID="ownerHEADER" runat="server" SkinID="recipeLabelHeader" Text="Recipe owner:"></asp:Label><br />
                 <asp:Label ID="ownerLBL" runat="server" Text='<%# Eval("rec_owner") %>'></asp:Label>
             </td>
         </tr>

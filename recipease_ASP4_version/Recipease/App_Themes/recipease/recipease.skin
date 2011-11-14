@@ -91,3 +91,29 @@ Default skin template. The following skins are provided as examples only.
     ForeColor="#FFFFFF"
     Width="75px" 
     Height="35px"  />
+
+<asp:ValidationSummary 
+    runat="server" 
+    HeaderText="Please correct the following errors:" 
+    Font-Bold="True" 
+    ForeColor="Red" />
+
+<asp:RequiredFieldValidator
+    runat="server"
+    Font-Bold="True"
+    ForeColor="Red" />
+
+<asp:RangeValidator
+    runat="server"
+    Font-Bold="True"
+    ForeColor="Red" />
+
+<asp:CustomValidator
+    runat="server"
+    Font-Bold="True"
+    ForeColor="Red" />
+
+<asp:RegularExpressionValidator
+    runat="server"
+    Font-Bold="True"
+    ForeColor="Red" />
