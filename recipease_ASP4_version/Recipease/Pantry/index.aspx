@@ -20,7 +20,8 @@
         OldValuesParameterFormatString="original_{0}"
         SelectCommand="SELECT RP.pantry_item, RP.pantry_item_quantity, RP.unit_id, RPT.pantry_type_name, RP.rec_owner, RP.pantry_type_id, RP.pantry_date, RU.unit_name
                         FROM RECIPEASE_PANTRY RP INNER JOIN RECIPEASE_PANTRY_TYPE RPT ON RP.pantry_type_id = RPT.pantry_type_id INNER JOIN RECIPEASE_UNIT RU ON  RU.unit_id = RP.unit_id
-                        WHERE (RP.rec_owner = @rec_owner)"
+                        WHERE (RP.rec_owner = @rec_owner)
+                        ORDER BY RP.pantry_item"
         DeleteCommand="DELETE FROM [RECIPEASE_PANTRY] WHERE [rec_owner] = @original_rec_owner AND [pantry_item] = @original_pantry_item"
         UpdateCommand="UPDATE [RECIPEASE_PANTRY] SET [pantry_item] = @pantry_item, [pantry_item_quantity] = @pantry_item_quantity, [unit_id] = @unit_id, [pantry_type_id] = @pantry_type_id, [pantry_date] = @pantry_date 
                         WHERE [rec_owner] = @original_rec_owner AND [pantry_item] = @original_pantry_item" >
@@ -61,7 +62,7 @@
         EmptyDataText="Your pantry is empty.  Add pantry items using the form on the right." 
         ForeColor="Black" GridLines="Vertical" AllowPaging="True" DataKeyNames="rec_owner,pantry_item"
         AllowSorting="True" AutoGenerateColumns="False" DataSourceID="PantrySDS" 
-        onrowupdated="GridView1_RowUpdated">
+        onrowupdated="GridView1_RowUpdated" PageSize="15">
         <AlternatingRowStyle BackColor="White" />
         <Columns>
             <asp:TemplateField ShowHeader="False">

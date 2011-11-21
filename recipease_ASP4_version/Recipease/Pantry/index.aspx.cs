@@ -22,7 +22,6 @@ public partial class Pantry_index : System.Web.UI.Page
     protected void AddPantryItemsBTN_CLICK(object sender, EventArgs e)
     {
         string rec_owner = User.Identity.Name.ToString();
-        string pantry_date = DateTime.Now.ToString();
 
         try
         {
@@ -55,7 +54,7 @@ public partial class Pantry_index : System.Web.UI.Page
                     insert01.Parameters.AddWithValue("@unit_name", Amount01DDL.SelectedValue);
                     insert01.Parameters.Add("@pantry_type_id", SqlDbType.Int).Value = 0;
                     insert01.Parameters.AddWithValue("@pantry_type_name", PantryType01DDL.SelectedValue);
-                    insert01.Parameters.AddWithValue("@pantry_date", pantry_date);
+                    insert01.Parameters.AddWithValue("@pantry_date", DateTime.Now.ToString());
                     insert01.ExecuteNonQuery(); //execute the sproc
                 }
 
@@ -69,7 +68,7 @@ public partial class Pantry_index : System.Web.UI.Page
                     insert02.Parameters.AddWithValue("@unit_name", Amount02DDL.SelectedValue);
                     insert02.Parameters.Add("@pantry_type_id", SqlDbType.Int).Value = 0;
                     insert02.Parameters.AddWithValue("@pantry_type_name", PantryType02DDL.SelectedValue);
-                    insert02.Parameters.AddWithValue("@pantry_date", pantry_date);
+                    insert02.Parameters.AddWithValue("@pantry_date", DateTime.Now.ToString());
                     insert02.ExecuteNonQuery(); //execute the sproc
                 }
 
@@ -83,7 +82,7 @@ public partial class Pantry_index : System.Web.UI.Page
                     insert03.Parameters.AddWithValue("@unit_name", Amount03DDL.SelectedValue);
                     insert03.Parameters.Add("@pantry_type_id", SqlDbType.Int).Value = 0;
                     insert03.Parameters.AddWithValue("@pantry_type_name", PantryType03DDL.SelectedValue);
-                    insert03.Parameters.AddWithValue("@pantry_date", pantry_date);
+                    insert03.Parameters.AddWithValue("@pantry_date", DateTime.Now.ToString());
                     insert03.ExecuteNonQuery(); //execute the sproc
                 }
 
@@ -97,7 +96,7 @@ public partial class Pantry_index : System.Web.UI.Page
                     insert04.Parameters.AddWithValue("@unit_name", Amount04DDL.SelectedValue);
                     insert04.Parameters.Add("@pantry_type_id", SqlDbType.Int).Value = 0;
                     insert04.Parameters.AddWithValue("@pantry_type_name", PantryType04DDL.SelectedValue);
-                    insert04.Parameters.AddWithValue("@pantry_date", pantry_date);
+                    insert04.Parameters.AddWithValue("@pantry_date", DateTime.Now.ToString());
                     insert04.ExecuteNonQuery(); //execute the sproc
                 }
 
@@ -111,7 +110,7 @@ public partial class Pantry_index : System.Web.UI.Page
                     insert05.Parameters.AddWithValue("@unit_name", Amount05DDL.SelectedValue);
                     insert05.Parameters.Add("@pantry_type_id", SqlDbType.Int).Value = 0;
                     insert05.Parameters.AddWithValue("@pantry_type_name", PantryType05DDL.SelectedValue);
-                    insert05.Parameters.AddWithValue("@pantry_date", pantry_date);
+                    insert05.Parameters.AddWithValue("@pantry_date", DateTime.Now.ToString());
                     insert05.ExecuteNonQuery(); //execute the sproc
                 }
 
@@ -125,7 +124,7 @@ public partial class Pantry_index : System.Web.UI.Page
                     insert06.Parameters.AddWithValue("@unit_name", Amount06DDL.SelectedValue);
                     insert06.Parameters.Add("@pantry_type_id", SqlDbType.Int).Value = 0;
                     insert06.Parameters.AddWithValue("@pantry_type_name", PantryType06DDL.SelectedValue);
-                    insert06.Parameters.AddWithValue("@pantry_date", pantry_date);
+                    insert06.Parameters.AddWithValue("@pantry_date", DateTime.Now.ToString());
                     insert06.ExecuteNonQuery(); //execute the sproc
                 }
 

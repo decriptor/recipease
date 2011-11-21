@@ -18,7 +18,8 @@
         OldValuesParameterFormatString="original_{0}"
         SelectCommand="SELECT rec_id, rec_ing_quantity, ing_name, RI.unit_id, unit_name 
                         FROM RECIPEASE_RECIPE_INGREDIENT RI INNER JOIN RECIPEASE_UNIT RU ON  RU.unit_id = RI.unit_id 
-                        WHERE ([rec_id] = @selected_rec_id)" 
+                        WHERE ([rec_id] = @selected_rec_id) 
+                        ORDER BY RI.ing_sequence" 
         DeleteCommand="DELETE FROM [RECIPEASE_RECIPE_INGREDIENT] WHERE [rec_id] = @original_rec_id AND [ing_name] = @original_ing_name"
         UpdateCommand="UPDATE [RECIPEASE_RECIPE_INGREDIENT] SET [rec_ing_quantity] = @rec_ing_quantity, [unit_id] = @unit_id, [ing_name] = @ing_name WHERE [rec_id] = @original_rec_id AND [ing_name] = @original_ing_name" 
         InsertCommand="INSERT INTO [RECIPEASE_RECIPE_INGREDIENT] ([rec_id], [ing_name], [rec_ing_quantity], [unit_id]) VALUES (@rec_id, @ing_name, @rec_ing_quantity, @unit_id)" >

@@ -57,6 +57,7 @@ public partial class Recipes_ingredients : System.Web.UI.Page
                     insert01.Parameters.AddWithValue("@rec_ing_quantity", Convert.ToDecimal(Quantity01TXT.Text));
                     insert01.Parameters.Add("@unit_id", SqlDbType.Int).Value = 0;
                     insert01.Parameters.AddWithValue("@unit_name", Amount01DDL.SelectedValue);
+                    insert01.Parameters.AddWithValue("@ing_sequence", 21);
                     insert01.ExecuteNonQuery(); //execute the sproc
                 }
 
@@ -68,6 +69,7 @@ public partial class Recipes_ingredients : System.Web.UI.Page
                     insert02.Parameters.AddWithValue("@rec_ing_quantity", Convert.ToDecimal(Quantity02TXT.Text));
                     insert02.Parameters.Add("@unit_id", SqlDbType.Int).Value = 0;
                     insert02.Parameters.AddWithValue("@unit_name", Convert.ToString(Amount02DDL.SelectedValue));
+                    insert02.Parameters.AddWithValue("@ing_sequence", 22);
                     insert02.ExecuteNonQuery(); //execute the sproc
                 }
 
@@ -79,6 +81,7 @@ public partial class Recipes_ingredients : System.Web.UI.Page
                     insert03.Parameters.AddWithValue("@rec_ing_quantity", Convert.ToDecimal(Quantity03TXT.Text));
                     insert03.Parameters.Add("@unit_id", SqlDbType.Int).Value = 0;
                     insert03.Parameters.AddWithValue("@unit_name", Convert.ToString(Amount03DDL.SelectedValue));
+                    insert03.Parameters.AddWithValue("@ing_sequence", 23);
                     insert03.ExecuteNonQuery(); //execute the sproc
                 }
 
@@ -90,6 +93,7 @@ public partial class Recipes_ingredients : System.Web.UI.Page
                     insert04.Parameters.AddWithValue("@rec_ing_quantity", Convert.ToDecimal(Quantity04TXT.Text));
                     insert04.Parameters.Add("@unit_id", SqlDbType.Int).Value = 0;
                     insert04.Parameters.AddWithValue("@unit_name", Convert.ToString(Amount04DDL.SelectedValue));
+                    insert04.Parameters.AddWithValue("@ing_sequence", 24);
                     insert04.ExecuteNonQuery(); //execute the sproc
                 }
 
@@ -101,6 +105,7 @@ public partial class Recipes_ingredients : System.Web.UI.Page
                     insert05.Parameters.AddWithValue("@rec_ing_quantity", Convert.ToDecimal(Quantity05TXT.Text));
                     insert05.Parameters.Add("@unit_id", SqlDbType.Int).Value = 0;
                     insert05.Parameters.AddWithValue("@unit_name", Convert.ToString(Amount05DDL.SelectedValue));
+                    insert05.Parameters.AddWithValue("@ing_sequence", 25);
                     insert05.ExecuteNonQuery(); //execute the sproc
                 }
 
@@ -112,6 +117,7 @@ public partial class Recipes_ingredients : System.Web.UI.Page
                     insert06.Parameters.AddWithValue("@rec_ing_quantity", Convert.ToDecimal(Quantity06TXT.Text));
                     insert06.Parameters.Add("@unit_id", SqlDbType.Int).Value = 0;
                     insert06.Parameters.AddWithValue("@unit_name", Convert.ToString(Amount06DDL.SelectedValue));
+                    insert06.Parameters.AddWithValue("@ing_sequence", 26);
                     insert06.ExecuteNonQuery(); //execute the sproc
                 }
 
