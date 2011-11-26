@@ -1,0 +1,30 @@
+USE [INFO3420_12]
+GO
+
+/****** Object:  Table [dbo].[RECIPEASE_UNIT]    Script Date: 11/21/2011 17:20:19 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+SET ANSI_PADDING ON
+GO
+
+CREATE TABLE [dbo].[RECIPEASE_UNIT](
+	[unit_id] [int] IDENTITY(1,1) NOT NULL,
+	[unit_name] [varchar](50) NOT NULL,
+	[unit_desc] [varchar](max) NULL,
+	[unit_short_form] [varchar](50) NULL,
+	[unit_plural_form] [varchar](50) NULL,
+ CONSTRAINT [PK_RECIPEASE_UNIT] PRIMARY KEY CLUSTERED 
+(
+	[unit_id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+SET ANSI_PADDING OFF
+GO
+
