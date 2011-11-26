@@ -81,7 +81,19 @@ Default skin template. The following skins are provided as examples only.
     Height="35px"  />
 
 <asp:Button 
-    SkinId="BlackButtonSmallText"
+    SkinId="BlackButtonLONG"
+    runat="server" 
+    BackColor="#39373A" 
+    BorderStyle="Outset" 
+    Font-Bold="True" 
+    Font-Names="Palatino Linotype" 
+    Font-Size="Medium"
+    ForeColor="#FFFFFF"
+    Width="100px" 
+    Height="35px"  />
+
+<asp:Button 
+    SkinId="BlackButtonSmallTextLONG"
     runat="server" 
     BackColor="#39373A" 
     BorderStyle="Outset" 
@@ -90,7 +102,19 @@ Default skin template. The following skins are provided as examples only.
     Font-Size="Small"
     ForeColor="#FFFFFF"
     Width="75px" 
-    Height="35px"  />
+    Height="40px"  />
+
+<asp:Button 
+    SkinId="BlackButtonSmallTextLONGER"
+    runat="server" 
+    BackColor="#39373A" 
+    BorderStyle="Outset" 
+    Font-Bold="True" 
+    Font-Names="Palatino Linotype" 
+    Font-Size="Small"
+    ForeColor="#FFFFFF"
+    Width="150px" 
+    Height="25px"  />
 
 <asp:ValidationSummary 
     runat="server" 

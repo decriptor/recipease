@@ -14,8 +14,8 @@
                 shopping list of the items you still need.  You'll never need to ask what's for dinner again.
             </p>
             <p>
-                After entering your recipes and food pantry items, you will be able to choose your menu for the day/week/2 weeks/month.  Your 
-                shopping list will be created based off what you need for your recipe and what you already have in 
+                After entering your recipes and food pantry items, you will be able to plan your meals.  Your 
+                shopping list will then be created based off what you need for your recipe and what you already have in 
                 your food pantry.
             </p>
             <p>

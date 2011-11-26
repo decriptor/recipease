@@ -5,7 +5,10 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
     <div id="onecolumn">
-        <h1>Meal Planner Results</h1>
+        <p>This page is no longer valid.  
+        <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Meals/index.aspx">Go back to the main meals page.</asp:HyperLink>
+        </p>
+<%--        <h1>Meal Planner Results</h1>
         <!-- CHECK BOX RESULT SET -->
         <span class="emphasis">Categories: Chicken, Mexican</span><br /><br />
         <asp:CheckBoxList ID="CheckBoxList1" runat="server">
@@ -26,7 +29,7 @@
             <asp:Button ID="Button3" SkinID="BlackButton" runat="server" Text="Go back" 
                 PostBackUrl="~/Meals/index.aspx" />
                 &nbsp;&nbsp;Go back, do NOT Save
-        </div>
+        </div>--%>
     </div>
 </asp:Content>
 
